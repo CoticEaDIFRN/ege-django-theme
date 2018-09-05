@@ -11,12 +11,3 @@ def index(request):
         'input': input,
     }
     return HttpResponse(template.render(context, request))
-
-
-def form(request):
-    input = Input.objects.all()
-    template = loader.get_template('form.html')
-    context = {
-        'input': input,
-    }
-    return HttpResponse(template.render(context, request))

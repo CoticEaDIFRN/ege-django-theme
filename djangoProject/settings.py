@@ -31,11 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tema',
     'material',
     'material.frontend',
     'viewflow',
     'viewflow.frontend',
-    'tema',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
