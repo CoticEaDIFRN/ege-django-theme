@@ -106,5 +106,5 @@ venv.bak/
 # Tests
 .idea/
 .DS_Store/
-.djangoProject/
+djangoProject/
 manage.py
