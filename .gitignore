@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Tests
+.idea/
+.DS_Store/
+.djangoProject/
+manage.py

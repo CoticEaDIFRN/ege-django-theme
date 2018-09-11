@@ -1,1 +1,1 @@
-# ege-django-theme
+# EGE Django Theme

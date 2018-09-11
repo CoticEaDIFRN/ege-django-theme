@@ -21,7 +21,7 @@ from material.frontend import urls as frontend_urls
 from django.conf import settings
 
 urlpatterns = [
-    path('', include('tema.urls')),
+    path('', include('ege-django-theme.urls')),
     path('admin/', admin.site.urls),
     url(r'^$', generic.RedirectView.as_view(url='/workflow/', permanent=False)),
     url(r'', include(frontend_urls)),
