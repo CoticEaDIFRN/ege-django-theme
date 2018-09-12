@@ -13,17 +13,15 @@ import setuptools
 from distutils.core import setup
 setup(
     name="ege_django_theme",
-    package_data={'ege_django_theme': [
-        'ege_django_theme/*',
-        'ege_django_theme/migrations/*',
-        'ege_django_theme/templates/*'
-    ],},
-    version="%s",
+    description="EGE Django Theme",
+    license='MIT',
     author="Luiz Antonio Freitas de Assis",
     author_email="luizvpc@gmail.com",
-    description="EGE Django Theme",
     url="https://github.com/CoticEaDIFRN/ege-django-theme",
-    packages=setuptools.find_packages(),
+    packages=['ege_django_theme', 'ege_django_theme/migrations', 'ege_django_theme/templates' ],
+    include_package_data=True,
+    # install_requires=[],
+    version="%s",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -38,5 +36,5 @@ os.system("git tag %s" % args.version)
 os.system("git push --tags origin master")
 os.system("python3 setup.py sdist")
 os.system("python3 -m pip install --user --upgrade twine")
-os.system("twine upload dist/ege-django-theme-%s.tar.gz" % args.version)
-os.system("python3 setup.py sdist upload -r pypi")
+#os.system("twine upload dist/ege-django-theme-%s.tar.gz" % args.version)
+#os.system("python3 setup.py sdist upload -r pypi")
