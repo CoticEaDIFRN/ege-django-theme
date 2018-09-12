@@ -12,11 +12,11 @@ with open('setup.py', 'w') as f:
 import setuptools    
 from distutils.core import setup
 setup(
-    name="ege-django-theme",
-    package_data={'ege-django-theme': [
-        'ege-django-theme/*',
-        'ege-django-theme/migrations/*',
-        'ege-django-theme/templates/*'
+    name="ege_django_theme",
+    package_data={'ege_django_theme': [
+        'ege_django_theme/*',
+        'ege_django_theme/migrations/*',
+        'ege_django_theme/templates/*'
     ],},
     version="%s",
     author="Luiz Antonio Freitas de Assis",
