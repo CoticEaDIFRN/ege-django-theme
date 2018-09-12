@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+import argparse
+import os
+
+
+parser = argparse.ArgumentParser(description='release project')
+parser.add_argument('version')
+args = parser.parse_args()
+
+with open('setup.py', 'w') as f:
+    f.write("""# -*- coding: utf-8 -*-
+import setuptools    
+from distutils.core import setup
+setup(
+    name="ege-django-theme",
+    package_data={'ege-django-theme': [
+        'ege-django-theme/*',
+        'ege-django-theme/migrations/*',
+        'ege-django-theme/templates/*'
+    ],},
+    version="%s",
+    author="Luiz Antonio Freitas de Assis",
+    author_email="luizvpc@gmail.com",
+    description="EGE Django Theme",
+    url="https://github.com/CoticEaDIFRN/ege-django-theme",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ]
+)
+""" % (args.version,))
+
+os.system("git add setup.py")
+os.system("git commit -m 'Release %s'" % args.version)
+os.system("git tag %s" % args.version)
+os.system("git push --tags origin master")
+os.system("python3 setup.py sdist")
+os.system("python3 -m pip install --user --upgrade twine")
+os.system("twine upload dist/ege-django-theme-%s.tar.gz" % args.version)
+os.system("python3 setup.py sdist upload -r pypi")
