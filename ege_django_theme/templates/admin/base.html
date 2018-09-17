@@ -26,19 +26,32 @@
         .menu {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
             height: 5em;
             background: #5D81C1;
         }
 
         .left-menu {
-            width: 230px;
+            width: 255.58px;
             display: flex;
             flex-direction: column;
             min-height: 100vH;
             z-index: 10;
             background: #33588E;
+        }
+
+        .logo {
+            width: 230px;
+        }
+
+        .top-perfil {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #33588E;
+            width: 3em;
+            height: 3em;
         }
 
         .left-menu li:hover {
@@ -55,7 +68,6 @@
 
         #branding a {
             text-decoration: none;
-            color: #fff;
         }
 
         #content-main {
@@ -141,25 +153,6 @@
             </ul>
         {% endif %}
     {% endblock messages %}
-
-    <!-- Content -->
-    <div id="content" class="{% block coltype %}colM{% endblock %} w-100 p-0 m-4 d-flex justify-content-center flex-column">
-        {% block pretitle %}{% endblock %}
-        {% comment %}{% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}{% endcomment %}
-        {% block content %}
-            {% block breadcrumbs %}
-                <div>
-                    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-                    {% if title %} &rsaquo; {{ title }}{% endif %}
-                </div>
-            {% endblock %}
-            {% block object-tools %}{% endblock %}
-            {{ content }}
-        {% endblock %}
-        {% block sidebar %}{% endblock %}
-        <br class="clear">
-    </div>
-    <!-- END Content -->
 
     {% block footer %}<div id="footer"></div>{% endblock %}
 </div>
