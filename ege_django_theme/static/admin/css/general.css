@@ -1,0 +1,102 @@
+.left-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5em;
+    background: #5D81C1;
+}
+
+.left-menu {
+    width: 255.58px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vH;
+    z-index: 10;
+    background: #33588E;
+}
+
+.logo {
+    width: 230px;
+}
+
+.top-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #33588E;
+    width: 3em;
+    height: 3em;
+}
+
+.left-menu li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+hr {
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+#branding {
+    background: #5D81C1;
+}
+
+#branding a {
+    text-decoration: none;
+}
+
+#content-main {
+    background: #fff;
+    width: 98%;
+}
+
+form .submit-row > input {
+    background: #33588E;
+    color: #fff;
+}
+
+.right-menu {
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    background: #162533;
+}
+
+.modal-back {
+    width: 100vW;
+    height: 100vH;
+    z-index: 5;
+    background: black;
+    opacity: 0.2;
+    position: absolute;
+}
+
+.md-app {
+    max-height: 400px;
+}
+
+.md-app-drawer {
+    width: 230px;
+    max-width: calc(100vw - 125px);
+}
+
+.md-card {
+    width: 16em;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.md-card-actions a {
+    font-size: 0.7rem;
+}
