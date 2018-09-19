@@ -21,7 +21,6 @@
 
 .change-list .filtered .results, .change-list .filtered .paginator,
 .filtered #toolbar, .filtered div.xfull {
-    margin-right: 280px;
     width: auto;
 }
 
@@ -119,16 +118,16 @@
 
 /* FILTER COLUMN */
 
-#changelist-filter {
+/*#changelist-filter {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 5;
     width: 240px;
     background: #f8f8f8;
     border-left: none;
     margin: 0;
-}
+}*/
 
 #changelist-filter h2 {
     font-size: 14px;
@@ -154,7 +153,7 @@
 
 #changelist-filter ul:last-child {
     border-bottom: none;
-    padding-bottom: none;
+    padding-bottom: 0;
 }
 
 #changelist-filter li {
@@ -170,14 +169,14 @@
     overflow-x: hidden;
 }
 
-#changelist-filter li.selected {
+/*#changelist-filter li.selected {
     border-left: 5px solid #eaeaea;
     padding-left: 10px;
     margin-left: -15px;
-}
+}*/
 
 #changelist-filter li.selected a {
-    color: #5b80b2;
+    color: #5D81C1;
 }
 
 #changelist-filter a:focus, #changelist-filter a:hover,
@@ -260,10 +259,10 @@
 
 /* ACTIONS */
 
-.filtered .actions {
+/*.filtered .actions {
     margin-right: 280px;
     border-right: none;
-}
+}*/
 
 #changelist table input {
     margin: 0;

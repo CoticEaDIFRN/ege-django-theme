@@ -1,65 +1,88 @@
 {% extends "admin/base_site.html" %}
-{% load i18n static %}
-
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
-{{ form.media }}
-{% endblock %}
-
-{% block bodyclass %}{{ block.super }} login{% endblock %}
-
-{% block usertools %}{% endblock %}
-
-{% block nav-global %}{% endblock %}
-
+{% block top_bar %}{% endblock %}
+{% block left_menu %}{% endblock %}
 {% block content_title %}{% endblock %}
 
-{% block breadcrumbs %}{% endblock %}
+{% load i18n static %}
+{% load static %}
 
 {% block content %}
+
     {% if form.errors and not form.non_field_errors %}
-    <p class="errornote">
-    {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-    </p>
+        <p class="errornote">
+            {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+        </p>
     {% endif %}
 
     {% if form.non_field_errors %}
-    {% for error in form.non_field_errors %}
-    <p class="errornote">
-        {{ error }}
-    </p>
-    {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p class="errornote">
+                {{ error }}
+            </p>
+        {% endfor %}
     {% endif %}
 
-    <div id="content-main" style="width: 95%">
+    {% if user.is_authenticated %}
+        <p class="errornote">
+        {% blocktrans trimmed %}
+            You are authenticated as {{ username }}, but are not authorized to
+            access this page. Would you like to login to a different account?
+        {% endblocktrans %}
+        </p>
+    {% endif %}
 
-        {% if user.is_authenticated %}
-            <p class="errornote">
-            {% blocktrans trimmed %}
-                You are authenticated as {{ username }}, but are not authorized to
-                access this page. Would you like to login to a different account?
-            {% endblocktrans %}
-            </p>
-        {% endif %}
+    <!DOCTYPE html>
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}">
 
-        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}">
-            <div class="form-row">
-                {{ form.username.errors }}
-                {{ form.username.label_tag }} {{ form.username }}
+        </head>
+        <body>
+            <div id="main" class="d-flex flex-row justify-content-center">
+                <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <div class="group">
+                        <h2 style="text-align: center; color: #113515;">ACADÊMICO</h2>
+                    </div>
+
+                    <div class="group">
+                        {{ form.username.errors }}
+                        {{ form.username }}
+                        <label>Username</label>
+                    </div>
+                    <div class="group">
+                        {{ form.password.errors }}
+                        {{ form.password }}
+                        <label>Password</label>
+                    </div>
+
+                    {% url 'admin_password_reset' as password_reset_url %}
+                    {% if password_reset_url %}
+                        <div class="group">
+                            <a href="{{ password_reset_url }}" style="color: #3eb24f; font-weight: bold; text-decoration: none;">{% trans 'Forgotten your password or username?' %}</a>
+                            <br>
+                            <!-- <span style="color:#86919a">Lembrar identificação de usuário</span> -->
+                        </div>
+                    {% endif %}
+
+                    <button type="submit" class="button buttonGreen">{% trans 'Log in' %}
+                        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                    </button>
+                </form>
+
+                <div id="instanciaMoodle" class="d-flex flex-row justify-content-center align-items-center">
+                    <p style="text-align:center;"><img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD"></p>
+                </div>
             </div>
-            <div class="form-row">
-                {{ form.password.errors }}
-                {{ form.password.label_tag }} {{ form.password }}
-            </div>
-            {% url 'admin_password_reset' as password_reset_url %}
-            {% if password_reset_url %}
-            <div class="password-reset-link">
-                <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
-            </div>
-            {% endif %}
-            <div class="submit-row">
-                <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}">
-            </div>
-        </form>
-    </div>
+
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="{% static 'admin/js/login.js' %}"></script>
+
+        </body>
+    </html>
 {% endblock %}

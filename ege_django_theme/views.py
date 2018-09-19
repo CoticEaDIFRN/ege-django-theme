@@ -6,7 +6,7 @@ from django.template import loader
 
 def index(request):
     input = Input.objects.all()
-    template = loader.get_template('index.html')
+    template = loader.get_template('admin')
     context = {
         'input': input,
     }
