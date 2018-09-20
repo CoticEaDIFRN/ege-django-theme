@@ -13,7 +13,7 @@ INSTALLED_APPS = 'ege_django_theme',
                  ......................
 ```
 
-Ainda ao ```settings.py``` adicione/altere a variável ```STATIC_URL = '/static/admin/'```.
+Certifique-se de que está setada a variável ```STATIC_URL = '/static/'```.
 
 Em ```urls.py``` inclua a url do Tema:
 
