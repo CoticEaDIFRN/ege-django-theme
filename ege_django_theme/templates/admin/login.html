@@ -62,13 +62,11 @@
                     </div>
 
                     {% url 'admin_password_reset' as password_reset_url %}
-                    {% if password_reset_url %}
+                    {% comment %}{% if password_reset_url %}{% endcomment %}
                         <div class="group">
-                            <a href="{{ password_reset_url }}" style="color: #3eb24f; font-weight: bold; text-decoration: none;">{% trans 'Forgotten your password or username?' %}</a>
-                            <br>
-                            <!-- <span style="color:#86919a">Lembrar identificação de usuário</span> -->
+                            <a href="https://suap.ifrn.edu.br/comum/solicitar_trocar_senha/" style="color: #3eb24f; font-weight: bold; text-decoration: none;"><small>{% trans 'Forgotten your password or username?' %}</small></a>
                         </div>
-                    {% endif %}
+                    {% comment %}{% endif %}{% endcomment %}
 
                     <button type="submit" class="button buttonGreen">{% trans 'Log in' %}
                         <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
@@ -80,7 +78,7 @@
                 </div>
             </div>
 
-            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="{% static 'js/jquery.js' %}"></script>
             <script src="{% static 'js/login.js' %}"></script>
 
         </body>
