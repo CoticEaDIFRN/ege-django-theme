@@ -214,11 +214,8 @@ input:focus ~ .highlight {
 }
 
 #instanciaMoodle {
-	margin-top: 25px;
 	background: #445646;
 	width: 400px;
-	height: 350px;
-	float: right;
 }
 
 #instanciaMoodle ul {

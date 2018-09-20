@@ -115,6 +115,12 @@
         {% endblock %}
         <!--Content-->
             <div id="content-main" class="d-flex w-100">
+                {% block chat %}
+                    <!--Chat-->
+
+                    <!--End Chat-->
+                {% endblock %}
+
                 <!--Modal-->
                 <div id="modal" class="modal-back d-none"></div>
                 <!--End Modal-->
@@ -140,7 +146,7 @@
             </div>
 
             <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-            <script src="{% static 'admin/js/general.js' %}"></script>
+            <script src="{% static 'js/general.js' %}"></script>
         <!--End Content-->
         <!--Right-Menu-->
             <div id="menu-user" class="right-menu d-none text-white">

@@ -1,3 +1,8 @@
+{% extends "admin/base_site.html" %}
+{% block top_bar %}{% endblock %}
+{% block left_menu %}{% endblock %}
+{% block content_title %}{% endblock %}
+
 {% load i18n static %}
 {% load static %}
 
@@ -34,7 +39,7 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>Document</title>
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
         </head>
         <body>
@@ -42,7 +47,7 @@
                 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
                     <div class="group">
-                        <h2 style="text-align: center; color: #113515;">ACADÊMICO</h2>
+                        <h2 class="text-center" style="color: #113515;">ACADÊMICO</h2>
                     </div>
 
                     <div class="group">
@@ -70,13 +75,13 @@
                     </button>
                 </form>
 
-                <div id="instanciaMoodle" class="d-flex flex-row justify-content-center align-items-center">
-                    <p style="text-align:center;"><img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD"></p>
+                <div id="instanciaMoodle" class="d-flex flex-row justify-content-center align-items-center mt-3 mb-3">
+                    <p class="text-center"><img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD"></p>
                 </div>
             </div>
 
             <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-            <script src="{% static 'admin/js/login.js' %}"></script>
+            <script src="{% static 'js/login.js' %}"></script>
 
         </body>
     </html>
