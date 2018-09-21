@@ -43,9 +43,10 @@
 
         </head>
         <body>
-            <div id="main" class="d-flex flex-row justify-content-center">
+            <div id="main" class="d-flex flex-row justify-content-center w-100">
                 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
+                    <img class="d-md-none w-75 mb-4" src="https://ead.ifrn.edu.br/portal/wp-content/uploads/2017/04/logo_IFRN_EaD.png" alt="Logo IFRN EaD">
                     <div class="group">
                         <h2 class="text-center" style="color: #113515;">ACADÊMICO</h2>
                     </div>
@@ -73,7 +74,7 @@
                     </button>
                 </form>
 
-                <div id="instanciaMoodle" class="d-flex flex-row justify-content-center align-items-center mt-3 mb-3">
+                <div id="instanciaMoodle" class="d-none d-md-flex flex-row justify-content-center align-items-center mt-3 mb-3">
                     <p class="text-center"><img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD"></p>
                 </div>
             </div>

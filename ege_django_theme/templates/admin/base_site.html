@@ -6,8 +6,6 @@
 
 {% block nav-global %}{% endblock %}
 
-{% comment %}{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}">{% endblock %}{% endcomment %}
-
 {% block branding %}
     {% block top_bar %}
         <!--Top bar-->
@@ -144,9 +142,9 @@
                 </div>
                 <!--End Content Page-->
             </div>
-
-            <script src="{% static 'js/jquery.js' %}"></script>
+            <script src="{% static 'js/vue.js' %}"></script>
             <script src="{% static 'js/general.js' %}"></script>
+            <script src="{% static 'js/jquery.js' %}"></script>
         <!--End Content-->
         <!--Right-Menu-->
             <div id="menu-user" class="right-menu d-none text-white">
