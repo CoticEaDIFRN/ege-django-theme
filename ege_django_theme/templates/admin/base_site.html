@@ -42,7 +42,7 @@
     <div class="d-flex w-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div id="left_menu" class="left-menu md-app-drawer d-none d-md-block text-white pt-5" style="z-index: 10;">
+            <div id="left_menu" class="left-menu d-none d-md-block text-white pt-5" style="z-index: 10;">
 
                 {% block filters %}
                     {% if cl.has_filters %}
@@ -58,40 +58,24 @@
                 <ul class="pt-lg-3">
                     {% if app_list %}
                         {% for app in app_list %}
-                            <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 6em">
-                                <h5 class="text-left m-0  ml-2"><a href="#" class="section text-white" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a></h5>
+                            <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em">
+                                <h5 class="text-left m-0 ml-2 mb-2">
+                                    <a href="#" class="section text-white d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+                                        <i class="material-icons arrow-right">
+                                            arrow_right
+                                        </i>
+                                        <i class="material-icons arrow-down d-none">
+                                            arrow_drop_down
+                                        </i>
+                                        {{ app.name }}
+                                    </a>
+                                </h5>
                                 {% for model in app.models %}
                                     {% if model.admin_url %}
                                         <ul class="sub-menu d-none">
-                                            <li class="d-flex align-items-center">
-                                                <p class="m-0 ml-4 w-50"><a href="{{ model.admin_url }}" class="text-white">{{ model.name }}</a></p>
-                                                <div class="md-card-actions w-50" style="justify-content: flex-end">
-                                                    <div class="more_actions d-none" style="display: flex">
-                                                        {% if model.add_url %}
-                                                            <span class="md-icon"><a href="{{ model.add_url }}" class="text-white">add_circle_outline</a></span>
-                                                            Add
-                                                        {% else %}
-
-                                                        {% endif %}
-
-                                                        {% if model.admin_url %}
-                                                            {% if model.view_only %}
-                                                                <span class="md-icon"><a href="{{ model.admin_url }}" class="text-white">pageview</a></span>
-                                                                View
-                                                            {% else %}
-                                                                <span class="md-icon"><a href="{{ model.admin_url }}" class="text-white">edit</a></span>
-                                                                Change
-                                                            {% endif %}
-                                                        {% else %}
-
-                                                        {% endif %}
-                                                    </div>
-                                                    {% if model.add_url or model.admin_url %}
-                                                        <span class="md-icon btn_more m-0"><a href="#" class="text-white">more_vert</a></span>
-                                                    {% endif %}
-                                                </div>
-                                            </li>
-                                            <hr class="m-0 ml-4 mr-2">
+                                            <a href="{{ model.admin_url }}" class="m-0 mr-4 d-flex flex-row justify-content-end">
+                                                <li><p class="text-white m-0">{{ model.name }}</p></li>
+                                            </a>
                                         </ul>
                                     {% else %}
                                         <ul>

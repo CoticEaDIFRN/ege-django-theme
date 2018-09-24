@@ -26,7 +26,7 @@ ul {
 }
 
 .logo {
-    width: 230px;
+    width: 255.58px;
 }
 
 .top-perfil {
@@ -39,8 +39,12 @@ ul {
     height: 3em;
 }
 
-.left-menu li:hover {
+.left-menu .sub-menu:hover, .left-menu .title-menu:hover{
     background: rgba(255, 255, 255, 0.1);
+}
+
+.left-menu .sub-menu{
+    height: 2em;
 }
 
 hr {
