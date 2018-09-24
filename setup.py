@@ -11,7 +11,7 @@ setup(
     packages=['ege_django_theme', 'ege_django_theme/migrations', 'ege_django_theme/templates' ],
     include_package_data=True,
     # install_requires=[],
-    version="0.2.8",
+    version="0.2.9",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
