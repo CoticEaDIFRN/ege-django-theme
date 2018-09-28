@@ -1,8 +1,31 @@
-let qquercoisa = new Vue({
-    el: "#vuejs",
+let vuejs_content = new Vue({
+    el: "#vuejs_content",
     data: {
         titulo: "Teste com Vue",
     },
+});
+
+let vuejs_menu = new Vue({
+    el: "#vuejs_menu",
+    data: {
+        menu_style: {
+            background: "#5D81C1"
+        },
+    },
+    methods: {
+        change_color: function () {
+            let e = document.getElementById("select");
+            let bkgColor = e.options[e.selectedIndex].text;
+            console.log(bkgColor);
+            if (bkgColor === "Purple") {
+                this.menu_style.background = "#ab63a5";
+            }
+            else if (bkgColor === "Green") {
+                this.menu_style.background = "#328D96";
+            }
+            else { this.menu_style.background = "#5D81C1"; }
+        }
+    }
 });
 
 var cont = 0;

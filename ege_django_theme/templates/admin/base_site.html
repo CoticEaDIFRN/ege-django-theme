@@ -11,7 +11,7 @@
         <!--Top bar-->
         <div class="page-container">
             <div class="md-app" name="reveal">
-              <div class="md-app-toolbar md-primary menu w-100 text-white">
+              <div id="vuejs_menu" class="md-app-toolbar md-primary menu w-100 text-white"{% verbatim menu_color%}:style="menu_style"{% endverbatim menu_color%}>
                   <button id="btn-menu" class="md-button md-icon-button f-left d-md-none">
                       <span class="md-icon text-white">menu</span>
                   </button>
@@ -29,6 +29,11 @@
                               <div id="top-user" class="top-perfil">
                                   <span><a href="#" class="text-white">{% firstof user.get_short_name %}</a></span>
                               </div>
+                              <select id="select" class="custom-select col-2 m-4" {% verbatim color_list%}@change="change_color"{% endverbatim color_list%}>
+                                <option selected>Select color</option>
+                                <option value="1">Green</option>
+                                <option value="2">Purple</option>
+                            </select>
                           </div>
                       </div>
                   </div>
@@ -118,8 +123,8 @@
                             {% block object-tools %}{% endblock %}
 
 
-                                <div id="vuejs">
-                                    <h1>{% verbatim 1%}{{ titulo }}{% endverbatim 1%}</h1>
+                                <div id="vuejs_content">
+                                    <h1>{% verbatim content%}{{ titulo }}{% endverbatim content%}</h1>
                                 </div>
 
                                 <script src="{% static 'js/jquery.js' %}"></script>
