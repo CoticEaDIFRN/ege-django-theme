@@ -1,3 +1,10 @@
+let qquercoisa = new Vue({
+    el: "#vuejs",
+    data: {
+        titulo: "Teste com Vue",
+    },
+});
+
 var cont = 0;
 $('#btn-menu').click(function () {
     $('.modal-back').toggleClass('d-block');

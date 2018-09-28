@@ -32,9 +32,7 @@
                           </div>
                       </div>
                   </div>
-
               </div>
-
             </div>
         </div>
         <!--End Top bar-->
@@ -61,12 +59,14 @@
                             <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em">
                                 <h5 class="text-left m-0 ml-2 mb-2">
                                     <a href="#" class="section text-white d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
-                                        <i class="material-icons arrow-right">
+                                        {% if app.models %}
+                                            <i class="material-icons arrow-right">
                                             arrow_right
-                                        </i>
-                                        <i class="material-icons arrow-down d-none">
-                                            arrow_drop_down
-                                        </i>
+                                            </i>
+                                            <i class="material-icons arrow-down d-none">
+                                                arrow_drop_down
+                                            </i>
+                                        {% endif %}
                                         {{ app.name }}
                                     </a>
                                 </h5>
@@ -116,7 +116,17 @@
                         {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
                         {% block content %}
                             {% block object-tools %}{% endblock %}
-                            {{ content }}
+
+
+                                <div id="vuejs">
+                                    <h1>{% verbatim 1%}{{ titulo }}{% endverbatim 1%}</h1>
+                                </div>
+
+                                <script src="{% static 'js/jquery.js' %}"></script>
+                                <script src="../../static/js/vue.js"></script>
+                                <script src="../../static/js/general.js"></script>
+
+                                {{ content }}
                         {% endblock %}
                         {% block sidebar %}{% endblock %}
                         <br class="clear">
@@ -126,9 +136,6 @@
                 </div>
                 <!--End Content Page-->
             </div>
-            <script src="{% static 'js/vue.js' %}"></script>
-            <script src="{% static 'js/general.js' %}"></script>
-            <script src="{% static 'js/jquery.js' %}"></script>
         <!--End Content-->
         <!--Right-Menu-->
             <div id="menu-user" class="right-menu d-none text-white">
@@ -163,5 +170,3 @@
 {% block coltype %}colMS{% endblock %}
 
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
-
-
