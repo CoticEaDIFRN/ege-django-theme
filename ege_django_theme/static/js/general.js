@@ -1,15 +1,13 @@
-let vuejs_content = new Vue({
-    el: "#vuejs_content",
+let vuejs_django = new Vue({
+    el: "#branding",
     data: {
         titulo: "Teste com Vue",
-    },
-});
-
-let vuejs_menu = new Vue({
-    el: "#vuejs_menu",
-    data: {
-        menu_style: {
+        select_option_default: "Select Theme",
+        top_menu_style: {
             background: "#5D81C1"
+        },
+        left_menu_style: {
+            background: "#33588E"
         },
     },
     methods: {
@@ -18,14 +16,22 @@ let vuejs_menu = new Vue({
             let bkgColor = e.options[e.selectedIndex].text;
             console.log(bkgColor);
             if (bkgColor === "Purple") {
-                this.menu_style.background = "#ab63a5";
+                this.select_option_default = "Default";
+                this.top_menu_style.background = "#ab63a5";
+                this.left_menu_style.background = "#9370DB";
             }
             else if (bkgColor === "Green") {
-                this.menu_style.background = "#328D96";
+                this.select_option_default = "Default";
+                this.top_menu_style.background = "#328D96";
+                this.left_menu_style.background = "#2E8B57";
             }
-            else { this.menu_style.background = "#5D81C1"; }
+            else {
+                this.select_option_default = "Select color";
+                this.top_menu_style.background = "#5D81C1";
+                this.left_menu_style.background = "#33588E";
+            }
         }
-    }
+    },
 });
 
 var cont = 0;

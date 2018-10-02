@@ -22,7 +22,6 @@ ul {
     flex-direction: column;
     min-height: 100vH;
     z-index: 10;
-    background: #33588E;
 }
 
 .logo {
@@ -73,6 +72,10 @@ form .submit-row > input {
     right: 0;
     z-index: 10;
     background: #162533;
+}
+
+.select-theme {
+    width: 80%;
 }
 
 .modal-back {
