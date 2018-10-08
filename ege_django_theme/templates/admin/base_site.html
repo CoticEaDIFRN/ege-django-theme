@@ -12,12 +12,14 @@
         <div class="page-container">
             <div class="md-app" name="reveal">
               <div id="vuejs_menu" class="md-app-toolbar md-primary menu w-100 text-white"{% verbatim menu_color%}:style="top_menu_style"{% endverbatim menu_color%}>
-                  <button id="btn-menu" class="md-button md-icon-button f-left d-md-none">
+                  <button id="btn-menu" class="md-button md-icon-button f-left d-md-none"{% verbatim r_menu%}@click="l_menu_toogle"{% endverbatim r_menu%}>
                       <span class="md-icon text-white">menu</span>
                   </button>
-                  <div class="d-none d-md-flex flex-row justify-content-center logo"></div>
+                  <div class="d-none d-md-flex flex-row justify-content-center logo border-right">
+                      <img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD">
+                  </div>
                   <div class="d-flex flex-row justify-content-between align-items-center w-100 h-100">
-                      <h4 id="home-link" class="ml-0">
+                      <h4 id="home-link" class="ml-3">
                           {% block page-title %}
                             <a href="{% url 'admin:index' %}" class="text-white">{{ site_header|default:_('Django administration') }}</a>
                           {% endblock %}
@@ -30,7 +32,7 @@
                               <div class="md-avatar md-avatar-icon md-accent">
                                   <span class="md-icon"><a href="#" class="text-white">chat</a></span>
                               </div>
-                              <div id="top-user" class="top-perfil">
+                              <div id="top-user" class="top-perfil"{% verbatim r_menu%}@click="r_menu_toogle"{% endverbatim r_menu%}>
                                   <span><a href="#" class="text-white">{% firstof user.get_short_name %}</a></span>
                               </div>
                           </div>
@@ -44,7 +46,7 @@
     <div class="d-flex w-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div id="left_menu" class="left-menu d-none d-md-block text-white pt-5"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%}>
+            <div class="left-menu text-white pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-if="l_menu_seen">
 
                 {% block filters %}
                     {% if cl.has_filters %}
@@ -60,14 +62,14 @@
                 <ul class="pt-lg-3">
                     {% if app_list %}
                         {% for app in app_list %}
-                            <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em">
+                            <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em"{% verbatim sub_menu%}@click="submenu_toogle"{% endverbatim sub_menu%}>
                                 <h5 class="text-left m-0 ml-2 mb-2">
                                     <a href="#" class="section text-white d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
                                         {% if app.models %}
-                                            <i class="material-icons arrow-right">
+                                            <i class="material-icons arrow-right" v-show="arrow_right_seen">
                                             arrow_right
                                             </i>
-                                            <i class="material-icons arrow-down d-none">
+                                            <i class="material-icons arrow-down" v-show="arrow_down_seen">
                                                 arrow_drop_down
                                             </i>
                                         {% endif %}
@@ -76,13 +78,13 @@
                                 </h5>
                                 {% for model in app.models %}
                                     {% if model.admin_url %}
-                                        <ul class="sub-menu d-none">
+                                        <ul class="sub-menu" v-show="sub_menu_seen">
                                             <a href="{{ model.admin_url }}" class="m-0 mr-4 d-flex flex-row justify-content-end">
                                                 <li><p class="text-white m-0">{{ model.name }}</p></li>
                                             </a>
                                         </ul>
                                     {% else %}
-                                        <ul>
+                                        <ul class="sub-menu" v-show="sub_menu_seen">
                                             <li>
                                                 <p class="text-left text-white ml-4">{{ model.name }}</p>
                                             </li>
@@ -108,7 +110,7 @@
                 {% endblock %}
 
                 <!--Modal-->
-                <div id="modal" class="modal-back d-none"></div>
+                <div id="modal" class="modal-back" v-if="modal_seen"></div>
                 <!--End Modal-->
 
                 <!--Content Page-->
@@ -120,11 +122,6 @@
                         {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
                         {% block content %}
                             {% block object-tools %}{% endblock %}
-
-                                <h1>{% verbatim content%}{{ titulo }}{% endverbatim content%}</h1>
-
-
-
                                 {{ content }}
                         {% endblock %}
                         {% block sidebar %}{% endblock %}
@@ -137,38 +134,41 @@
             </div>
         <!--End Content-->
         <!--Right-Menu-->
-            <div id="menu-user" class="right-menu d-none text-white">
-                {% if has_permission %}
-                    <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
-                        <div class="text-center mt-4">
-                            <span class="md-icon"><a href="#" class="text-white">account_circle</a></span>
-                        </div>
-                        <h5 class="p-4 text-center">
-                            {% trans 'Welcome, ' %}<span class="text-bold">{% firstof user.get_short_name user.get_username %}!</span>
-                        </h5>
+            <transition :duration="{ enter: 500, leave: 100 }">
+                <div id="menu-user" class="right-menu text-white" v-if="r_menu_seen">
+                    {% if has_permission %}
+                        <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
+                            <div class="text-center mt-4">
+                                <span class="md-icon"><a href="#" class="text-white">account_circle</a></span>
+                            </div>
+                            <h5 class="p-4 text-center">
+                                {% trans 'Welcome, ' %}<span class="text-bold">{% firstof user.get_short_name user.get_username %}!</span>
+                            </h5>
 
-                        <select id="select" class="custom-select select-theme mb-4 w-75" {% verbatim color_list%}@change="change_color"{% endverbatim color_list%}>
-                            <option selected>{% verbatim option_color%}{{ select_option_default }}{% endverbatim option_color%}</option>
-                            <option value="1">Green</option>
-                            <option value="2">Purple</option>
-                        </select>
+                            <select id="select" v-model="selected" class="custom-select select-theme mb-4 w-75" {% verbatim color_list%}@change="change_color"{% endverbatim color_list%}>
+                                <option value="0">{% verbatim option_color%}{{ select_option_default }}{% endverbatim option_color%}</option>
+                                <option value="1">Green</option>
+                                <option value="2">Purple</option>
+                            </select>
 
-                        {% if user.is_active and user.is_staff %}
-                            {% url 'django-admindocs-docroot' as docsroot %}
-                            {% if docsroot %}
-                                <a href="{{ docsroot }}" class="text-white">{% trans 'Documentation' %}</a>
+                            {% if user.is_active and user.is_staff %}
+                                {% url 'django-admindocs-docroot' as docsroot %}
+                                {% if docsroot %}
+                                    <a href="{{ docsroot }}" class="text-white">{% trans 'Documentation' %}</a>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                        {% if site_url %}
-                            <a href="{{ site_url }}" class="text-center p-2 text-white">{% trans 'View site' %}</a></h5>
-                        {% endif %}
-                        {% if user.has_usable_password %}
-                            <a href="{% url 'admin:password_change' %}" class="text-center p-2 text-white">{% trans 'Change password' %}</a>
-                        {% endif %}
-                        <a href="{% url 'admin:logout' %}" class="text-right p-4 text-white"><span class="md-icon">highlight_off</span>{% trans 'Log out' %}</a>
-                    </div>
-                {% endif %}
-            </div>
+                            {% if site_url %}
+                                <a href="{{ site_url }}" class="text-center p-2 text-white">{% trans 'View site' %}</a></h5>
+                            {% endif %}
+                            {% if user.has_usable_password %}
+                                <a href="{% url 'admin:password_change' %}" class="text-center p-2 text-white">{% trans 'Change password' %}</a>
+                            {% endif %}
+                            <a href="{% url 'admin:logout' %}" class="text-right p-4 text-white"><span class="md-icon">highlight_off</span>{% trans 'Log out' %}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </transition>
+
         <!--End Right-Menu-->
     </div>
 {% endblock %}
