@@ -14,14 +14,3 @@ INSTALLED_APPS = 'ege_django_theme',
 ```
 
 Certifique-se de que está setada a variável ```STATIC_URL = '/static/'```.
-
-Em ```urls.py``` inclua a url do Tema:
-
-```
-from django.conf.urls import include,
-.......
-
-urlpatterns = [
-    path('', include('ege_django_theme.urls')),
-    ........
-```
