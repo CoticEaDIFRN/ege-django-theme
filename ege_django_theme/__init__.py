@@ -1,1 +1,1 @@
-name = "ege-django-theme"
+name = "ege"

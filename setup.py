@@ -7,7 +7,7 @@ setup(
     license='MIT',
     author="Luiz Antonio Freitas de Assis",
     author_email="luizvpc@gmail.com",
-    url="https://github.com/CoticEaDIFRN/ege-django-theme",
+    url="https://github.com/CoticEaDIFRN/ege",
     packages=['ege_django_theme', 'ege_django_theme/migrations', 'ege_django_theme/templates' ],
     include_package_data=True,
     # install_requires=[],

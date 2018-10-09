@@ -61,9 +61,9 @@ let vuejs_django = new Vue({
         },
         submenu_toogle: function ($event) {
             console.log($event.target);
-            /*this.sub_menu_seen = !this.sub_menu_seen;
+            this.sub_menu_seen = !this.sub_menu_seen;
             this.arrow_down_seen = !this.arrow_down_seen;
-            this.arrow_right_seen = !this.arrow_right_seen;*/
+            this.arrow_right_seen = !this.arrow_right_seen;
         },
     },
 });
