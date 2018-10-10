@@ -9,7 +9,7 @@
 {% block branding %}
     {% block top_bar %}
         <!--Top bar-->
-        <div class="page-container">
+        <div id="topbar" class="page-container">
             <div class="md-app" name="reveal">
               <div id="vuejs_menu" class="md-app-toolbar md-primary menu w-100 text-white"{% verbatim menu_color%}:style="top_menu_style"{% endverbatim menu_color%}>
                   <button id="btn-menu" class="md-button md-icon-button f-left d-md-none"{% verbatim r_menu%}@click="l_menu_toogle"{% endverbatim r_menu%}>
@@ -46,7 +46,7 @@
     <div class="d-flex w-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div class="left-menu text-white pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-if="l_menu_seen">
+            <div id="leftmenu" class="left-menu text-white pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-show="l_menu_seen">
 
                 {% block filters %}
                     {% if cl.has_filters %}
@@ -76,21 +76,19 @@
                                         {{ app.name }}
                                     </a>
                                 </h5>
-                                {% for model in app.models %}
-                                    {% if model.admin_url %}
-                                        <ul class="sub-menu" v-show="sub_menu_seen">
-                                            <a href="{{ model.admin_url }}" class="m-0 mr-4 d-flex flex-row justify-content-end">
-                                                <li><p class="text-white m-0">{{ model.name }}</p></li>
-                                            </a>
-                                        </ul>
-                                    {% else %}
-                                        <ul class="sub-menu" v-show="sub_menu_seen">
-                                            <li>
-                                                <p class="text-left text-white ml-4">{{ model.name }}</p>
-                                            </li>
-                                        </ul>
-                                    {% endif %}
-                                {% endfor %}
+                                <ul class="sub-menu" v-show="sub_menu_seen">
+                                    {% for model in app.models %}
+                                        {% if model.admin_url %}
+                                                <a href="{{ model.admin_url }}" class="m-0 mr-4 d-flex flex-row justify-content-end">
+                                                    <li><p class="text-white m-0">{{ model.name }}</p></li>
+                                                </a>
+                                        {% else %}
+                                                <li>
+                                                    <p class="text-left text-white ml-4">{{ model.name }}</p>
+                                                </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
                             </li>
                         {% endfor %}
                     {% else %}
@@ -135,7 +133,7 @@
         <!--End Content-->
         <!--Right-Menu-->
             <transition :duration="{ enter: 500, leave: 100 }">
-                <div id="menu-user" class="right-menu text-white" v-if="r_menu_seen">
+                <div id="rightmenu" class="right-menu text-white" v-show="r_menu_seen">
                     {% if has_permission %}
                         <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
                             <div class="text-center mt-4">
