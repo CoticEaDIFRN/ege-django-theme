@@ -46,13 +46,13 @@
     <div class="d-flex w-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div id="leftmenu" class="left-menu text-white pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-show="l_menu_seen">
+            <div id="leftmenu" class="left-menu pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-show="l_menu_seen">
                 <ul class="pt-lg-3">
                     {% if app_list %}
                         {% for app in app_list %}
                             <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em"{% verbatim sub_menu%}@click="submenu_toogle"{% endverbatim sub_menu%}>
                                 <h5 class="text-left m-0 ml-2 mb-2">
-                                    <a href="#" class="section text-white d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+                                    <a href="#" class="section d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
                                         {% if app.models %}
                                             <i class="material-icons arrow-right" v-show="arrow_right_seen">
                                             arrow_right
@@ -68,11 +68,11 @@
                                     {% for model in app.models %}
                                         {% if model.admin_url %}
                                                 <a href="{{ model.admin_url }}" class="m-0 mr-4 d-flex flex-row justify-content-end">
-                                                    <li><p class="text-white m-0">{{ model.name }}</p></li>
+                                                    <li><p class="m-0">{{ model.name }}</p></li>
                                                 </a>
                                         {% else %}
                                                 <li>
-                                                    <p class="text-left text-white ml-4">{{ model.name }}</p>
+                                                    <p class="text-left ml-4">{{ model.name }}</p>
                                                 </li>
                                         {% endif %}
                                     {% endfor %}
@@ -100,10 +100,10 @@
                 <!--End Modal-->
 
                 <!--Content Page-->
-                <div id="content-adm" class="w-100 pt-5 text-center">
+                <div id="content-adm" class="w-100 text-center"{% verbatim content%}:style="content_style"{% endverbatim content%}>
                     {% block breadcrumbs %}{% endblock %}
                     <!-- Content -->
-                    <div id="content" class="w-100 d-flex justify-content-center flex-column">
+                    <div id="content" class="w-100 d-flex justify-content-center flex-column pt-4">
                         {% block pretitle %}{% endblock %}
                         {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
                         {% block content %}

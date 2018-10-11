@@ -6,7 +6,8 @@ let leftmenu = new Vue({
         arrow_down_seen: false,
         arrow_right_seen: true,
         left_menu_style: {
-            background: "#33588E"
+            background: "#fff",
+            color: "#53555E",
         },
     },
     methods: {
@@ -44,7 +45,7 @@ let rightmenu = new Vue({
             else {
                 this.select_option_default = "Select color";
                 topbar.top_menu_style.background = "#5D81C1";
-                leftmenu.left_menu_style.background = "#33588E";
+                leftmenu.left_menu_style.background = "#fff";
             }
         },
     },
@@ -82,6 +83,9 @@ let topbar = new Vue({
 let contentmain = new Vue({
     el: "#content-main",
     data: {
+        content_style: {
+            background: "#f3f3f3",
+        },
         modal_seen: false,
         filter_seen: false,
         btn_filter_clicked: false,

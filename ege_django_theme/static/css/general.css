@@ -13,7 +13,6 @@ ul {
     flex-direction: row;
     align-items: center;
     height: 5em;
-    background: #5D81C1;
 }
 
 .left-menu {
@@ -26,6 +25,56 @@ ul {
 
 .logo {
     width: 255.58px;
+}
+
+@media (min-width: 768px) and (max-width: 790px) {
+    .logo {
+        width: 286.58px;
+    }
+}
+
+@media (min-width: 791px) and (max-width: 815px) {
+    .logo {
+        width: 282.58px;
+    }
+}
+
+@media (min-width: 816px) and (max-width: 839px) {
+    .logo {
+        width: 280.58px;
+    }
+}
+
+@media (min-width: 840px) and (max-width: 859px) {
+    .logo {
+        width: 279.58px;
+    }
+}
+
+@media (min-width: 860px) and (max-width: 866px) {
+    .logo {
+        width: 277.58px;
+    }
+}
+
+@media (min-width: 867px) and (max-width: 870px) {
+    .logo {
+        width: 276.58px;
+    }
+}
+
+@media (min-width: 871px) and (max-width: 1108px) {
+    .logo {
+        width: 275.58px;
+    }
+}
+
+
+
+@media (min-width: 1109px) and (max-width: 1127px) {
+    .logo {
+        width: 286.58px;
+    }
 }
 
 .top-perfil {
@@ -50,16 +99,12 @@ hr {
     border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
-#branding {
-    background: #5D81C1;
-}
-
 #branding a {
     text-decoration: none;
 }
 
-#content-main {
-    background: #fff;
+#leftmenu a{
+    color: inherit;
 }
 
 form .submit-row > input {
