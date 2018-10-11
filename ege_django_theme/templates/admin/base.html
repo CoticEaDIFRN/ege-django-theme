@@ -36,8 +36,6 @@
     {% if not is_popup %}
         <div id="branding">
             {% block branding %}{% endblock %}
-            <script src="../../static/js/vue.js"></script>
-            <script src="../../static/js/general.js"></script>
         </div>
 
         {% block nav-global %}{% endblock %}
@@ -56,10 +54,8 @@
     {% block footer %}<div id="footer"></div>{% endblock %}
 </div>
 <!-- END Container -->
-
+    <script src="{% static 'js/vue.js' %}"></script>
     <script src="{% static 'js/general.js' %}"></script>
     <script href="{% static 'js/bootstrap.min.js' %}"></script>
-
-
 </body>
 </html>

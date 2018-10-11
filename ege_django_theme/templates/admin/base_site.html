@@ -47,18 +47,6 @@
         {% block left_menu %}
             <!--Left Menu-->
             <div id="leftmenu" class="left-menu text-white pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-show="l_menu_seen">
-
-                {% block filters %}
-                    {% if cl.has_filters %}
-                        <div id="changelist-filter">
-                            <h2>{% trans 'Filter' %}</h2>
-                            {% for spec in cl.filter_specs %}
-                                {% admin_list_filter cl spec %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endblock %}
-
                 <ul class="pt-lg-3">
                     {% if app_list %}
                         {% for app in app_list %}

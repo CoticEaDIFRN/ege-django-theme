@@ -10,13 +10,9 @@ let leftmenu = new Vue({
         },
     },
     methods: {
-        submenu_toogle: function ($event) {
-            /*let submenu = $event.path[2].children[1];
-            let arrow_right = $event.target.children[0];
-            let arrow_down = $event.target.children[1];
-            let sub = document.getElementsByClassName('sub-menu');
-            console.log(sub, submenu, arrow_right, arrow_down);*/
-            console.log(this);
+        submenu_toogle: function () {
+            console.log(event.path[2].children[1]);
+
             this.sub_menu_seen = !this.sub_menu_seen;
             this.arrow_down_seen = !this.arrow_down_seen;
             this.arrow_right_seen = !this.arrow_right_seen;
@@ -87,8 +83,12 @@ let contentmain = new Vue({
     el: "#content-main",
     data: {
         modal_seen: false,
+        filter_seen: false,
+        btn_filter_clicked: false,
     },
     methods: {
-
+        show_filter: function () {
+            this.filter_seen = !this.filter_seen;
+        }
     },
 });
