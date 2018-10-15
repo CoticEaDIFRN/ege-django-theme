@@ -26,7 +26,7 @@ Em ```settings.py```:
             ....................
             ],
             'libraries': {
-                'common_utils': 'my_admin.templatetags.common_utils',
+                'common_utils': 'ege_django_theme.templatetags.common_utils',
             },
         },
     },
