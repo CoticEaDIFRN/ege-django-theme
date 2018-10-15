@@ -6,15 +6,14 @@ let leftmenu = new Vue({
         arrow_down_seen: false,
         arrow_right_seen: true,
         left_menu_style: {
-            background: "#fff",
+            background: "#FAFAFA",
             color: "#53555E",
         },
     },
     methods: {
         submenu_toogle: function () {
             console.log(event.path[2].children[1]);
-
-            this.sub_menu_seen = !this.sub_menu_seen;
+            event.path[2].children[1].addClassName('d-none');
             this.arrow_down_seen = !this.arrow_down_seen;
             this.arrow_right_seen = !this.arrow_right_seen;
         },
@@ -35,17 +34,14 @@ let rightmenu = new Vue({
             if (bkgColor === "Purple") {
                 this.select_option_default = "Default";
                 topbar.top_menu_style.background = "#ab63a5";
-                leftmenu.left_menu_style.background = "#9370DB";
             }
             else if (bkgColor === "Green") {
                 this.select_option_default = "Default";
-                topbar.top_menu_style.background = "#328D96";
-                leftmenu.left_menu_style.background = "#2E8B57";
+                topbar.top_menu_style.background = "#41D596";
             }
             else {
                 this.select_option_default = "Select color";
-                topbar.top_menu_style.background = "#5D81C1";
-                leftmenu.left_menu_style.background = "#fff";
+                topbar.top_menu_style.background = "#2470C6";
             }
         },
     },
@@ -55,7 +51,7 @@ let topbar = new Vue({
     el: "#topbar",
     data: {
         top_menu_style: {
-            background: "#5D81C1"
+            background: "#2470C6"
         },
     },
     methods: {
@@ -84,7 +80,7 @@ let contentmain = new Vue({
     el: "#content-main",
     data: {
         content_style: {
-            background: "#f3f3f3",
+            background: "#F7F7F7",
         },
         modal_seen: false,
         filter_seen: false,
