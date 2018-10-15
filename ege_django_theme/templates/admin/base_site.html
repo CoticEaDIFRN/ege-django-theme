@@ -1,6 +1,7 @@
 {% extends "admin/base.html" %}
 {% load i18n static %}
 {% load i18n admin_urls static admin_list %}
+{% load common_utils %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
@@ -48,8 +49,10 @@
             <!--Left Menu-->
             <div id="leftmenu" class="left-menu pt-5 shadow-sm"{% verbatim left_menu%}:style="left_menu_style"{% endverbatim left_menu%} v-show="l_menu_seen">
                 <ul class="pt-lg-3">
-                    {% if app_list %}
-                        {% for app in app_list %}
+
+                    {% get_app_list as all_app_list %}
+                    {% if all_app_list %}
+                        {% for app in all_app_list %}
                             <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em"{% verbatim sub_menu%}@click="submenu_toogle"{% endverbatim sub_menu%}>
                                 <h5 class="text-left m-0 ml-2 mb-2">
                                     <a href="#" class="section d-flex" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
