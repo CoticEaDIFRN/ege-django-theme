@@ -1,8 +1,11 @@
 {% load i18n %}
-<p>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</p>
-<ul class="p-0">
-{% for choice in choices %}
-    <li{% if choice.selected %} class="selected"{% endif %}>
-    <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a></li>
-{% endfor %}
-</ul>
+
+<div class="d-flex flex-column" style="width: 10em">
+    <p>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</p>
+    <ul class="d-flex justify-content-around">
+    {% for choice in choices %}
+        <li{% if choice.selected %} class="selected"{% endif %}>
+        <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a></li>
+    {% endfor %}
+    </ul>
+</div>

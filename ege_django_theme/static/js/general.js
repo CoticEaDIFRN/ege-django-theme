@@ -13,7 +13,7 @@ let leftmenu = new Vue({
     methods: {
         submenu_toogle: function () {
             console.log(event.path[2].children[1]);
-            event.path[2].children[1].addClassName('d-none');
+            this.sub_menu_seen = !this.sub_menu_seen;
             this.arrow_down_seen = !this.arrow_down_seen;
             this.arrow_right_seen = !this.arrow_right_seen;
         },
@@ -83,12 +83,22 @@ let contentmain = new Vue({
             background: "#F7F7F7",
         },
         modal_seen: false,
-        filter_seen: false,
+        filter_seen: '',
         btn_filter_clicked: false,
     },
     methods: {
         show_filter: function () {
+            console.log(this.filter_seen);
             this.filter_seen = !this.filter_seen;
         }
     },
 });
+
+let filter = new Vue({
+    el: "#filter",
+    data: {
+
+    },
+});
+
+contentmain.filter_seen = false;
