@@ -67,7 +67,7 @@
                 {% block filters %}
                     {% if cl.has_filters %}
                         <div id="changelist-filter" class="d-flex flex-row align-items-center justify-content-around m-3 w-50">
-                            <button type="button" class="btn btn-outline-primary btn-sm m-0" style="height: 2em"{% verbatim filter%}@click=show_filter{% endverbatim filter%}>
+                            <button id="btn_filter" type="button" class="btn btn-outline-primary btn-sm m-0" style="height: 2em"{% verbatim filter%}@click='show_filter'{% endverbatim filter%}>
                                 <div class="d-flex flex-row align-baseline">
                                     <p class="m-0 mr-2">{% trans 'Filter' %}</p>
                                     <span>&or;</span>

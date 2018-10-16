@@ -60,7 +60,7 @@ let topbar = new Vue({
             if (leftmenu.l_menu_seen === true){
                 rightmenu.r_menu_seen = !leftmenu.l_menu_seen;
             }
-            contentmain.modal_seen = leftmenu.l_menu_seen;
+            modal.modal_seen = leftmenu.l_menu_seen;
         },
 
         r_menu_toogle: function () {
@@ -69,36 +69,28 @@ let topbar = new Vue({
                 leftmenu.l_menu_seen = !rightmenu.r_menu_seen;
             }
             if (window.innerWidth >= 768) {
-                contentmain.modal_seen = false
+                modal.modal_seen = false
             }
-            else { contentmain.modal_seen = leftmenu.l_menu_seen }
+            else { modal.modal_seen = leftmenu.l_menu_seen }
         },
     },
 });
 
-let contentmain = new Vue({
-    el: "#content-main",
+let modal = new Vue ({
+    el: "#modal",
     data: {
-        content_style: {
-            background: "#F7F7F7",
-        },
         modal_seen: false,
-        filter_seen: '',
-        btn_filter_clicked: false,
-    },
-    methods: {
-        show_filter: function () {
-            console.log(this.filter_seen);
-            this.filter_seen = !this.filter_seen;
-        }
     },
 });
 
 let filter = new Vue({
-    el: "#filter",
+    el: "#changelist-filter",
     data: {
-
+        filter_seen: false,
+    },
+    methods: {
+        show_filter: function () {
+            this.filter_seen = !this.filter_seen;
+        }
     },
 });
-
-contentmain.filter_seen = false;
