@@ -163,6 +163,7 @@ hr {
 
 #branding a {
     text-decoration: none;
+    color: inherit;
 }
 
 #leftmenu a{

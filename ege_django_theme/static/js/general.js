@@ -9,13 +9,18 @@ let leftmenu = new Vue({
             background: "#FAFAFA",
             color: "#53555E",
         },
+        cont: 0,
     },
     methods: {
         submenu_toogle: function () {
-            console.log(event.path[2].children[1]);
-            this.sub_menu_seen = !this.sub_menu_seen;
-            this.arrow_down_seen = !this.arrow_down_seen;
-            this.arrow_right_seen = !this.arrow_right_seen;
+            if (this.cont % 2 === 0) {
+                event.path[2].children[1].className = 'd-block';
+                this.cont ++
+            }
+            else {
+                event.path[2].children[1].className = '';
+                this.cont --;
+            }
         },
     },
 });
@@ -81,6 +86,7 @@ let modal = new Vue ({
     data: {
         modal_seen: false,
     },
+
 });
 
 let filter = new Vue({

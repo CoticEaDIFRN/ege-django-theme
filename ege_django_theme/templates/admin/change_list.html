@@ -24,14 +24,14 @@
 {% endblock %}
 
 {% block page-title %}
-    <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}" class="text-white">{{ cl.opts.app_config.verbose_name }}</a>
+    <h2 class="text-white ml-4">{{ cl.opts.verbose_name_plural|capfirst }}</h2>
 {% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
 
 {% if not is_popup %}
     {% block breadcrumbs %}
-        <div class="breadcrumbs text-left m-2">
+        <div class="breadcrumbs text-left m-2 ml-4">
             <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
             &rsaquo; <a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{ cl.opts.app_config.verbose_name }}</a>
             &rsaquo; {{ cl.opts.verbose_name_plural|capfirst }}
@@ -66,14 +66,15 @@
             <div class="d-flex flex-column align-items-center">
                 {% block filters %}
                     {% if cl.has_filters %}
-                        <div id="changelist-filter" class="d-flex flex-row align-items-center justify-content-around m-3 w-50">
-                            <button id="btn_filter" type="button" class="btn btn-outline-primary btn-sm m-0" style="height: 2em"{% verbatim filter%}@click='show_filter'{% endverbatim filter%}>
-                                <div class="d-flex flex-row align-baseline">
-                                    <p class="m-0 mr-2">{% trans 'Filter' %}</p>
-                                    <span>&or;</span>
+                        <div id="changelist-filter" class="d-flex flex-column flex-md-row align-items-center justify-content-center m-3 w-75">
+                            <button id="btn_filter" type="button" class="btn btn-outline-primary btn-sm mb-3 mb-md-0 m-0 col-4 col-md-1" style="height: 2em" @click='show_filter'>
+                                <div class="d-flex flex-row justify-content-around">
+                                    <p class="m-0">{% trans 'Filter' %}</p>
+                                    <i class="material-icons" v-if="filter_seen">visibility_off</i>
+                                    <i class="material-icons" v-else>visibility</i>
                                 </div>
                             </button>
-                            <div id="filter" v-if="filter_seen" class="d-flex flex-row justify-content-around w-75">
+                            <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around w-75 col-md-11">
                                 {% for spec in cl.filter_specs %}
                                     {% admin_list_filter cl spec %}
                                 {% endfor %}
