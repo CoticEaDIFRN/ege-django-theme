@@ -1,5 +1,6 @@
 let leftmenu = new Vue({
     el: "#leftmenu",
+    delimiters: ['${', '}'],
     data: {
         l_menu_seen: (window.innerWidth >= 768),
         sub_menu_seen: false,
@@ -9,17 +10,21 @@ let leftmenu = new Vue({
             background: "#FAFAFA",
             color: "#53555E",
         },
-        cont: 0,
     },
     methods: {
         submenu_toogle: function () {
-            if (this.cont % 2 === 0) {
-                event.path[2].children[1].className = 'd-block';
-                this.cont ++
+            let inicialClassRight = 'material-icons arrow-right';
+            let inicialClassDown = 'material-icons arrow-down';
+            if (event.path[3].children[1].classList.value !== 'd-block') {
+                event.path[3].children[1].className = 'd-block';
+                event.path[1].children[0].className += ' d-none';
+                event.path[1].children[1].className += ' d-block';
             }
             else {
-                event.path[2].children[1].className = '';
-                this.cont --;
+                event.path[3].children[1].className = '';
+                event.path[1].children[0].className = inicialClassRight;
+                event.path[1].children[1].className = inicialClassDown;
+
             }
         },
     },
@@ -27,6 +32,7 @@ let leftmenu = new Vue({
 
 let rightmenu = new Vue({
     el: "#rightmenu",
+    delimiters: ['${', '}'],
     data: {
         r_menu_seen: false,
         selected: 0,
@@ -54,6 +60,7 @@ let rightmenu = new Vue({
 
 let topbar = new Vue({
     el: "#topbar",
+    delimiters: ['${', '}'],
     data: {
         top_menu_style: {
             background: "#2470C6"
@@ -69,7 +76,21 @@ let topbar = new Vue({
         },
 
         r_menu_toogle: function () {
+            console.log(event.path[9].children[1]);
+            let menu = event.path[13].all[71];
             rightmenu.r_menu_seen = !rightmenu.r_menu_seen;
+            if (rightmenu.r_menu_seen === true){
+                document.onclick = function (event) {
+                    console.log(event.target, menu);
+                    if (event.target !== menu){
+                        console.log('entrou');
+                        //rightmenu.r_menu_seen = false;
+                    }
+                    else {
+                        console.log('não');
+                    }
+                }
+            }
             if (rightmenu.r_menu_seen === true && window.innerWidth < 768){
                 leftmenu.l_menu_seen = !rightmenu.r_menu_seen;
             }
@@ -83,6 +104,7 @@ let topbar = new Vue({
 
 let modal = new Vue ({
     el: "#modal",
+    delimiters: ['${', '}'],
     data: {
         modal_seen: false,
     },
