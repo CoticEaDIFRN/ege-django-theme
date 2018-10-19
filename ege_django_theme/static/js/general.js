@@ -15,8 +15,8 @@ let leftmenu = new Vue({
         submenu_toogle: function () {
             let inicialClassRight = 'material-icons arrow-right';
             let inicialClassDown = 'material-icons arrow-down';
-            if (event.path[3].children[1].classList.value !== 'd-block') {
-                event.path[3].children[1].className = 'd-block';
+            if (event.path[3].children[1].classList.value !== 'd-flex flex-column align-items-end') {
+                event.path[3].children[1].className = 'd-flex flex-column align-items-end';
                 event.path[1].children[0].className += ' d-none';
                 event.path[1].children[1].className += ' d-block';
             }

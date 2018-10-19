@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
 #content-main {
     background: #F7F7F7;
 }
@@ -214,3 +218,8 @@ form .submit-row > input {
 .md-card-actions a {
     font-size: 0.7rem;
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #D8E4F1; // Choose your own color here
+ }

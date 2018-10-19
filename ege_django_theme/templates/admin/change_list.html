@@ -50,34 +50,21 @@
             </p>
             {{ cl.formset.non_form_errors }}
         {% endif %}
+
         <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+
             {% block search %}
                 {% search_form cl %}
             {% endblock %}
+
             {% block date_hierarchy %}
                 {% date_hierarchy cl %}
             {% endblock %}
+
             <div class="d-flex flex-column align-items-center">
-                {% block filters %}
-                    {% if cl.has_filters %}
-                        <div id="changelist-filter" class="d-flex flex-column flex-md-row align-items-center justify-content-center m-3 w-75">
-                            <button id="btn_filter" type="button" class="btn btn-outline-primary btn-sm mb-3 mb-md-0 m-0 col-4 col-md-1" style="height: 2em" @click='show_filter'>
-                                <div class="d-flex flex-row justify-content-around">
-                                    <p class="m-0">{% trans 'Filter' %}</p>
-                                    <i class="material-icons" v-if="filter_seen">visibility_off</i>
-                                    <i class="material-icons" v-else>visibility</i>
-                                </div>
-                            </button>
-                            <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around w-75 col-md-11">
-                                {% for spec in cl.filter_specs %}
-                                    {% admin_list_filter cl spec %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endblock %}
-                <div class="d-flex flex-row w-100 justify-content-center">
-                    <form id="changelist-form" class="col-10" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
+
+                <div class="d-flex flex-row w-100 justify-content-center border-bottom">
+                    <form id="changelist-form" class="col-12 mb-4" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
                         {% if cl.formset %}
                             <div>{{ cl.formset.management_form }}</div>
                         {% endif %}
@@ -87,16 +74,35 @@
                             {% result_list cl %}
                             {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
                         {% endblock %}
-                        {% block pagination %}{% pagination cl %}{% endblock %}
+                        {% block pagination %}{% endblock %}
                     </form>
 
                 </div>
-                {% block object-tools %}
-                    <ul class="object-tools p-0">
-                        {% block object-tools-items %}
-                            {% change_list_object_tools %}
-                        {% endblock %}
-                    </ul>
+
+                {% block filters %}
+                    {% if cl.has_filters %}
+                        <div id="changelist-filter" class="d-flex flex-column flex-md-row align-items-center justify-content-between m-3 w-75">
+                            <a class="mb-3 mb-md-0 m-0 col-4 col-md-1" @click='show_filter'>
+                                <div class="d-flex flex-row justify-content-around">
+                                    <p class="m-0">{% trans 'Filter' %}</p>
+                                    <i class="material-icons" v-if="filter_seen">visibility_off</i>
+                                    <i class="material-icons" v-else>visibility</i>
+                                </div>
+                            </a>
+                            <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around w-75 col-md-11">
+                                {% for spec in cl.filter_specs %}
+                                    {% admin_list_filter cl spec %}
+                                {% endfor %}
+                            </div>
+                            {% block object-tools %}
+                                <ul class="object-tools p-0">
+                                    {% block object-tools-items %}
+                                        {% change_list_object_tools %}
+                                    {% endblock %}
+                                </ul>
+                            {% endblock %}
+                        </div>
+                    {% endif %}
                 {% endblock %}
             </div>
         </div>

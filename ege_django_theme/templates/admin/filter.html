@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="d-flex flex-column col-md-3">
+<div class="d-flex flex-column col-md-3 border-left border-right">
     <p>{% blocktrans with filter_title=title %} {{ filter_title }} {% endblocktrans %}</p>
     <ul class="d-flex justify-content-around">
     {% for choice in choices %}
