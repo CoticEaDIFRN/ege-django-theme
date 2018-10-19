@@ -199,27 +199,7 @@ form .submit-row > input {
     position: absolute;
 }
 
-.md-app {
-    max-height: 400px;
-}
-
-.md-app-drawer {
-    width: 230px;
-    max-width: calc(100vw - 125px);
-}
-
-.md-card {
-    width: 16em;
-    margin: 4px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.md-card-actions a {
-    font-size: 0.7rem;
-}
-
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: #D8E4F1; // Choose your own color here
+   background-color: #D8E4F1;
  }

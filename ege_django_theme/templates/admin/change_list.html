@@ -82,7 +82,7 @@
                 {% block filters %}
                     {% if cl.has_filters %}
                         <div id="changelist-filter" class="d-flex flex-column flex-md-row align-items-center justify-content-between m-3 w-75">
-                            <a class="mb-3 mb-md-0 m-0 col-4 col-md-1" @click='show_filter'>
+                            <a class="mb-3 mb-md-0 m-0 p-0 col-4 col-md-1" @click='show_filter'>
                                 <div class="d-flex flex-row justify-content-around">
                                     <p class="m-0">{% trans 'Filter' %}</p>
                                     <i class="material-icons" v-if="filter_seen">visibility_off</i>

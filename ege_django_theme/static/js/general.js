@@ -1,3 +1,17 @@
+window.onload = function(){
+    let l = document.location.href;
+    if (l !== 'http://127.0.0.1:8000/' && l !== 'http://127.0.0.1:8000/' && l !== 'http://127.0.0.1:8000/password_change/'){
+        for (let i = 0; i < event.target.links.length; i++) {
+            if (event.target.links[i].href === document.location.href) {
+                let e = event.target.links[i].parentElement.parentNode;
+                console.log(event.target.links[i].parentElement);
+                e.className += ' d-flex flex-column align-items-end';
+                event.target.links[i].parentElement.style.backgroundColor = '#D8E4F1';
+            }
+        }
+    }
+};
+
 let leftmenu = new Vue({
     el: "#leftmenu",
     delimiters: ['${', '}'],

@@ -16,8 +16,8 @@
                   <button id="btn-menu" class="md-button md-icon-button f-left d-md-none" @click="l_menu_toogle">
                       <span class="md-icon text-white">menu</span>
                   </button>
-                  <div class="d-none d-md-flex flex-row justify-content-center logo">
-                      <img class="w-75" src="https://ead.ifrn.edu.br/ava/academico/theme/boost_eadifrn/pix/eadifrn-logo.svg" alt="Logo IFRN EaD">
+                  <div class="d-none d-md-flex flex-row justify-content-left logo">
+                      <img class="w-50 ml-4" src="{% static 'img/ege branco.svg' %}" alt="Ecossistema de Gestão em Educação">
                   </div>
                   <div class="d-flex flex-row justify-content-between align-items-center w-100 h-100">
                       {% block page-title %}
@@ -52,7 +52,7 @@
                     {% if all_app_list %}
                         {% for app in all_app_list %}
                             <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em">
-                                <h5 class="text-left m-0 ml-2 mb-2" @click="submenu_toogle">
+                                <h5 class="text-left m-0 mb-2" @click="submenu_toogle">
                                     <a href="#" class="section d-flex align-items-center justify-content-between" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
                                         {% if app.models %}
                                             <i class="material-icons arrow-right col-1 p-0" v-show="arrow_right_seen">
@@ -63,15 +63,15 @@
                                             </i>
                                         {% endif %}
                                         <span class="col-1 p-0"><i class="material-icons">cast_for_education</i></span>
-                                        <span class="col-10 p-0 ml-3">{{ app.name }}</span>
+                                        <span class="col-10 p-0 ml-4">{{ app.name }}</span>
                                     </a>
                                 </h5>
                                 <ul class="" v-show="sub_menu_seen">
                                     {% for model in app.models %}
-                                        <div class="col-6">
+                                        <div class="menuLeftModel col-11">
                                             {% if model.admin_url %}
                                                 <a href="{{ model.admin_url }}" class="text-left">
-                                                    <li><p class="m-0">{{ model.name }}</p></li>
+                                                    <li style="margin-left: 50%"><p class="m-0">{{ model.name }}</p></li>
                                                 </a>
                                             {% else %}
                                                 <li>
