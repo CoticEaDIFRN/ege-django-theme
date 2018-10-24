@@ -148,7 +148,6 @@ ul {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #33588E;
     width: 3em;
     height: 3em;
 }
@@ -183,7 +182,6 @@ form .submit-row > input {
     position: absolute;
     right: 0;
     z-index: 10;
-    background: #162533;
 }
 
 .select-theme {

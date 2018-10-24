@@ -19,7 +19,7 @@ h1, h3 { font-weight: 300; }
 
 h1 { color: #636363; }
 
-h3 { color: #3eb24f; }
+h3 { color: #558FD0; }
 
 form {
 	width: 320px;
@@ -28,7 +28,7 @@ form {
 	background: #fafafa;
 	border: 1px solid #ebebeb;
 	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px, rgba(0,0,0,0.09804) 0px 1px 2px 0px;
-	border-top: 4px solid #3eb24f;
+	border-top: 4px solid #558FD0;
 }
 
 .group {
@@ -72,7 +72,7 @@ input:focus ~ label, input.used ~ label {
 	top: -20px;
   transform: scale(.75); left: -2px;
 	/* font-size: 14px; */
-	color: #3eb24f;
+	color: #558FD0;
 }
 
 
@@ -90,7 +90,7 @@ input:focus ~ label, input.used ~ label {
 	width: 0;
 	bottom: 1px;
 	position: absolute;
-	background: #3eb24f;
+	background: #558FD0;
 	transition: all 0.2s ease;
 }
 
@@ -127,7 +127,7 @@ input:focus ~ .highlight {
 /* Animations */
 
 @keyframes inputHighlighter {
-	from { background: #3eb24f; }
+	from { background: #558FD0; }
 	to 	{ width: 0; background: transparent; }
 }
 
@@ -160,11 +160,11 @@ input:focus ~ .highlight {
 /* Button modifiers */
 
 .buttonGreen {
-  background: #3eb24f;
+  background: #558FD0;
   text-shadow: 1px 1px 0 rgba(13, 100, 27, 0.5);
 }
 
-.buttonBlue:hover { background: #3eb24f; }
+.buttonBlue:hover { background: #558FD0; }
 
 
 /* Ripples container */
@@ -214,7 +214,7 @@ input:focus ~ .highlight {
 }
 
 #instanciaMoodle {
-	background: #445646;
+	background: #1A559A;
 	width: 400px;
 }
 
@@ -228,13 +228,13 @@ input:focus ~ .highlight {
 }
 
 #instanciaMoodle li {
-	color: #3eb24f;
+	color: #558FD0;
 	font-weight: bold;
 }
 
 #instanciaMoodle a {
 	text-decoration: none;
-	color: #3eb24f
+	color: #558FD0
 }
 
 #instanciaMoodle a:hover {
@@ -250,7 +250,7 @@ footer p {
 }
 
 footer a {
-	color: #3eb24f;
+	color: #558FD0;
 	text-decoration: none;
 	transition: all .2s ease;
 }
