@@ -208,26 +208,21 @@ let error = new Vue({
     data: {
         error_seen: false,
     },
+    methods: {
+
+    },
     mounted() {
         this.error_seen = true;
     },
     updated() {
-        let erros = document.getElementById("error").getElementsByTagName("input");
+        /*let erros = document.getElementById("error").getElementsByTagName("input");
         let title = erros[0].value;
         let text = erros[1].value;
-        let icon = erros[2].value;
-        //swal(title, text, icon);
-        console.log();
-
-
-    },
-    methods: {
-        swal (title, text, icon) {
-            sweetAlert({
-                title: title,
-                text: text,
-                icon: icon,
-            });
-        },
+        let icon = erros[2].value;*/
+        swal({
+          title: 'Usuário ou senha incorretos',
+          text: '',
+          icon: 'warning',
+        });
     },
 });

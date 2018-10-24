@@ -19,9 +19,9 @@
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
                 <div id="error" v-if="error_seen">
-                    <input type="hidden" value="{% trans "Authentication failure" %}">
+                    <!--<input type="hidden" value="{% trans "Authentication failure" %}">
                     <input type="hidden" value="{{ error }}">
-                    <input type="hidden" value="error">
+                    <input type="hidden" value="error">-->
                 </div>
             {% endfor %}
         {% endif %}
@@ -74,6 +74,4 @@
         </div>
     </div>
 
-    <script src="{% static 'js/vue.js' %}"></script>
-    <script src="{% static 'js/general.js' %}"></script>
 {% endblock %}
