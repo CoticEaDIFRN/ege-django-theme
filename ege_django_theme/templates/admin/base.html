@@ -32,7 +32,7 @@
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
-<div id="container" style="height: 100vh">
+<div id="container" class="h-100">
 
     {% if not is_popup %}
         <div id="branding" class="h-100">
@@ -59,6 +59,7 @@
 <script src="{% static 'js/vue.js' %}"></script>
 <script src="{% static 'js/general.js' %}"></script>
 <script href="{% static 'js/bootstrap.min.js' %}"></script>
+
 {% block javascript %}
 
 {% endblock %}

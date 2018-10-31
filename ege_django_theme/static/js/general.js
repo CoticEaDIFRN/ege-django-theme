@@ -10,6 +10,9 @@ window.onload = function(){
             if (password.value) { password.className += ' used'; }
         };
     }
+    console.log(document.getElementById("resultInput"));
+    console.log(document.getElementById("itemInput"));
+
 };
 
 let leftmenu = new Vue({

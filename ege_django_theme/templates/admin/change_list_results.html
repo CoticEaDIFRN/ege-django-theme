@@ -5,6 +5,16 @@
     </div>
 {% endif %}
 {% if results %}
+
+    {% comment %}
+        {% for result in results %}
+            <div id="resultInput" class=""><p>result:</p>{{ result }}</div>
+            {% for item in result %}
+                <div id="itemInput" class=""><p>item:</p>{{ item }}</div>
+            {% endfor %}
+        {% endfor %}
+    {% endcomment %}
+
     <div class="results table-responsive">
         <table id="result_list" class="table table-striped">
             <thead>
