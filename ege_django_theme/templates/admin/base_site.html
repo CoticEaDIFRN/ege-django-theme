@@ -16,7 +16,7 @@
                   <button id="btn-menu" class="md-button md-icon-button f-left d-md-none" @click="l_menu_toogle">
                       <span class="md-icon text-white">menu</span>
                   </button>
-                  <div class="d-none d-md-flex flex-row justify-content-left logo">
+                  <div class="d-none d-md-flex flex-row justify-content-left logo" @click="emitNotificationAlert">
                       <img class="w-50 ml-4" src="{% static 'img/ege branco.svg' %}" alt="Ecossistema de Gestão em Educação">
                   </div>
                   <div class="d-flex flex-row justify-content-between align-items-center w-100 h-100">
@@ -25,11 +25,13 @@
                       {% endblock %}
                       <div id="icons-top" class="pr-md-5 h-100">
                           <div class="d-flex flex-row justify-between align-items-center h-100">
-                              <div class="md-avatar md-avatar-icon">
+                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end" style="border-radius: 0">
                                   <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
+                                  <span class="position-absolute" v-if="countNotificationSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
                               </div>
-                              <div class="md-avatar md-avatar-icon md-accent">
+                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end" style="border-radius: 0">
                                   <span class="md-icon"><a href="#" class="text-white">chat</a></span>
+                                  <span class="position-absolute" v-if="countChatSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
                               </div>
                               <div id="top-user" class="top-perfil" @click="r_menu_toogle" :style="top_perfil_style">
                                   <span><a href="#" class="text-white">{% firstof user.get_full_name|cut:"a"|cut:"b"|cut:"c"|cut:"d"|cut:"e"|cut:"f"|cut:"g"|cut:"h"|cut:"i"|cut:"j"|cut:"k"|cut:"l"|cut:"m"|cut:"n"|cut:"o"|cut:"p"|cut:"q"|cut:"r"|cut:"s"|cut:"t"|cut:"u"|cut:"v"|cut:"w"|cut:"x"|cut:"y"|cut:"z" user.get_username %}</a></span>
@@ -45,9 +47,8 @@
     <div class="d-flex w-100 h-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div id="leftmenu" class="left-menu pt-5 shadow d-none d-md-block" :style="left_menu_style" v-show="l_menu_seen">
+            <div id="leftmenu" class="left-menu pt-5 shadow d-none d-md-block" :style="left_menu_style" v-show="l_menu_seen" @click="emitChatAlert">
                 <ul class="pt-lg-3">
-
                     {% get_app_list as all_app_list %}
                     {% if all_app_list %}
                         {% for app in all_app_list %}

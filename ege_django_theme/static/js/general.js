@@ -10,10 +10,12 @@ window.onload = function(){
             if (password.value) { password.className += ' used'; }
         };
     }
-    console.log(document.getElementById("resultInput"));
-    console.log(document.getElementById("itemInput"));
-
 };
+
+const EventBus = new Vue();
+
+//EventBus.$on('new-notification', countNotification => {});
+//Bus.$on('new-chat', countChat => {});
 
 let leftmenu = new Vue({
     el: "#leftmenu",
@@ -61,6 +63,13 @@ let leftmenu = new Vue({
                 event.path[1].children[1].className = inicialClassDown;
             }
         },
+        emitChatAlert() {
+            topbar.countChat++;
+            if (topbar.countChat !== 0) {
+                topbar.countChatSeen = true
+            }
+            EventBus.$emit('new-chat', this.countChat);
+        }
     },
 });
 
@@ -135,6 +144,10 @@ let topbar = new Vue({
         top_perfil_style: {
             background: "#33588E"
         },
+        countNotification: 0,
+        countChat: 0,
+        countNotificationSeen: false,
+        countChatSeen: false,
     },
     updated() {
         localStorage.color_top = this.top_menu_style.background;
@@ -186,6 +199,13 @@ let topbar = new Vue({
             }
             else { modal.modal_seen = leftmenu.l_menu_seen }
         },
+        emitNotificationAlert() {
+            this.countNotification++;
+            if (this.countNotification !== 0) {
+                this.countNotificationSeen = true
+            }
+            EventBus.$emit('new-notification', this.countNotification);
+        },
     },
 });
 
@@ -234,4 +254,8 @@ let error = new Vue({
           icon: 'warning',
         });
     },
+});
+
+let result = new Vue({
+    el: "#result_cards",
 });
