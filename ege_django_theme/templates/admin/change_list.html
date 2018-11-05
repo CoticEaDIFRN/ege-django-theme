@@ -81,15 +81,15 @@
 
                 {% block filters %}
                     {% if cl.has_filters %}
-                        <div id="changelist-filter" class="d-flex flex-column flex-md-row align-items-center justify-content-between m-3 w-75">
-                            <a class="mb-3 mb-md-0 m-0 p-0 col-4 col-md-1" @click='show_filter'>
+                        <div id="changelist-filter" class="d-flex flex-column flex-xl-row align-items-center justify-content-between m-3 w-75">
+                            <a class="col-4 col-md-2" @click='show_filter'>
                                 <div class="d-flex flex-row justify-content-around">
                                     <p class="m-0">{% trans 'Filter' %}</p>
                                     <i class="material-icons" v-if="filter_seen">visibility_off</i>
                                     <i class="material-icons" v-else>visibility</i>
                                 </div>
                             </a>
-                            <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around w-75 col-md-11">
+                            <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around">
                                 {% for spec in cl.filter_specs %}
                                     {% admin_list_filter cl spec %}
                                 {% endfor %}

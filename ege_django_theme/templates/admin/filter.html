@@ -1,8 +1,8 @@
 {% load i18n %}
 
-<div class="d-flex flex-column col-md-3 border-left border-right">
+<div class="d-flex flex-column col-md-4 border-left border-right">
     <p>{% blocktrans with filter_title=title %} {{ filter_title }} {% endblocktrans %}</p>
-    <ul class="d-flex justify-content-around">
+    <ul class="d-flex p-0 justify-content-between">
     {% for choice in choices %}
         <li{% if choice.selected %} class="selected"{% endif %}>
         <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a></li>
