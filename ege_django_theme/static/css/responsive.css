@@ -116,7 +116,6 @@ input[type="submit"], button {
         -webkit-flex: 1 0 auto;
         flex: 1 0 auto;
         width: 0;
-        height: 22px;
         margin: 0 10px 0 6px;
     }
 
