@@ -163,11 +163,11 @@ let topbar = new Vue({
     methods: {
         l_menu_toogle: function () {
             leftmenu.l_menu_seen = !leftmenu.l_menu_seen;
-            if(document.getElementById("leftmenu").className === "left-menu pt-5 shadow d-none d-md-block"){
+            if(document.getElementById("leftmenu").className === "left-menu pt-5 shadow d-md-block"){
                 document.getElementById("leftmenu").className = "left-menu pt-5 shadow d-md-block"
             }
             else {
-                document.getElementById("leftmenu").className = "left-menu pt-5 shadow d-none d-md-block"
+                document.getElementById("leftmenu").className = "left-menu pt-5 shadow d-md-block"
             }
             if (leftmenu.l_menu_seen === true){
                 rightmenu.r_menu_seen = !leftmenu.l_menu_seen;
