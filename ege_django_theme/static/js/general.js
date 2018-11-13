@@ -49,18 +49,20 @@ let leftmenu = new Vue({
         }
     },
     methods: {
-        submenu_toogle: function () {
+        submenu_toogle: function (event) {
+            let a = event.target.parentElement;
+            let li = a.parentElement.parentElement;
             let inicialClassRight = 'material-icons arrow-right';
             let inicialClassDown = 'material-icons arrow-down';
-            if (event.path[3].children[1].classList.value !== 'd-flex flex-column align-items-end') {
-                event.path[3].children[1].className = 'd-flex flex-column align-items-end';
-                event.path[1].children[0].className += ' d-none';
-                event.path[1].children[1].className += ' d-block';
+            if (li.children[1].classList.value !== 'd-flex flex-column align-items-end') {
+                li.children[1].className = 'd-flex flex-column align-items-end';
+                a.children[0].className += ' d-none';
+                a.children[1].className += ' d-block';
             }
             else {
-                event.path[3].children[1].className = '';
-                event.path[1].children[0].className = inicialClassRight;
-                event.path[1].children[1].className = inicialClassDown;
+                li.children[1].className = '';
+                a.children[0].className = inicialClassRight;
+                a.children[1].className = inicialClassDown;
             }
         },
         emitChatAlert() {
