@@ -8,12 +8,12 @@
 
     <div id="result_cards">
         <template>
-            <div>
-                <md-list class="md-triple-line">
+                <md-list id="card-header" class="md-triple-line md-card-header">
                     <md-list-item>
                         <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center">
                             {% for header in result_headers %}
-                                <div class="md-list md-theme-default {% if "checkbox" in header.class_attrib %}col-1{% elif "username" in header.class_attrib %}col-2{% elif "email" in header.class_attrib %}col-3{% elif "first_name" in header.class_attrib %}col-2{% elif "last_name" in header.class_attrib %}col-2{% elif "is_staff" in header.class_attrib %}col-2{% endif %}">
+                                <div class="md-list md-theme-default {% if "checkbox" in header.class_attrib %}col-1{% elif "username" in header.class_attrib %}col-2{% elif "email" in header.class_attrib %}col-3{% elif "first_name" in header.class_attrib %}col-2{% elif "last_name" in header.class_attrib %}col-2{% elif "is_staff" in header.class_attrib %}col-2{% endif %}"
+                                {% if "checkbox" in header.class_attrib %}@click="check_all()"{% endif %}>
                                     {% if header.sortable %}
                                         {% if header.sort_priority > 0 %}
                                             <div class="sortoptions">
@@ -24,9 +24,6 @@
                                         {% endif %}
                                     {% endif %}
                                     <md-list-item>
-                                        <md-avatar class="d-none">
-                                            <img src="https://placeimg.com/40/40/people/5" alt="People">
-                                        </md-avatar>
                                         <div class="text-center">
                                             {% if header.sortable %}<a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>{% else %}<span>{{ header.text|capfirst }}</span>{% endif %}
                                         </div>
@@ -37,19 +34,20 @@
                     </md-list-item>
                 </md-list>
                 <md-divider class="md-inset"></md-divider>
-                <md-list class="md-triple-line">
+                <md-list id="card-content" class="md-triple-line">
                     {% for result in results %}
+                        {% if result.form.non_field_errors %}
+                            <md-list-item>
+                                <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center"><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></div>
+                            </md-list-item>
+                        {% endif %}
                         <md-list-item>
-                            <md-avatar class="d-none">
-                                <img src="https://placeimg.com/40/40/people/5" alt="People">
-                            </md-avatar>
                             <div class="md-list-item-text {% cycle 'row1' 'row2' %} d-flex flex-row align-items-center justify-content-center">
                                 {% for item in result %}<div class="text-center {% if "checkbox" in item %}col-1{% elif "username" in item %}col-2{% elif "email" in item %}col-3{% elif "first_name" in item %}col-2{% elif "last_name" in item %}col-2{% elif "is_staff" in item %}col-2{% endif %}">{{ item|urlize }}</div>{% endfor %}
                             </div>
                         </md-list-item>
                     {% endfor %}
                 </md-list>
-            </div>
         </template>
     </div>
 

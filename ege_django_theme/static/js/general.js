@@ -244,10 +244,6 @@ let error = new Vue({
         this.error_seen = true;
     },
     updated() {
-        /*let erros = document.getElementById("error").getElementsByTagName("input");
-        let title = erros[0].value;
-        let text = erros[1].value;
-        let icon = erros[2].value;*/
         swal({
           title: 'Usuário ou senha incorretos',
           text: '',
@@ -258,4 +254,15 @@ let error = new Vue({
 
 let result = new Vue({
     el: "#result_cards",
+    data: {
+
+    },
+    methods: {
+        check_all: function () {
+            let check_content = document.getElementById('card-content').getElementsByTagName('input');
+            for (let i = 0; i < check_content.length; i++){
+                check_content[i].checked = event.target.checked;
+            }
+        }
+    },
 });
