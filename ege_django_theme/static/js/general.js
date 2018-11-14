@@ -1,8 +1,8 @@
 window.onload = function(){
-    let l = document.location.pathname;
+    const l = document.location.pathname;
     if (l === '/login/'){
-        let username = document.getElementById("id_username");
-        let password = document.getElementById("id_password");
+        const username = document.getElementById("id_username");
+        const password = document.getElementById("id_password");
         username.onblur = function () {
             if (username.value) { username.className += ' used'; }
         };
@@ -17,7 +17,7 @@ const EventBus = new Vue();
 //EventBus.$on('new-notification', countNotification => {});
 //Bus.$on('new-chat', countChat => {});
 
-let leftmenu = new Vue({
+const leftmenu = new Vue({
     el: "#leftmenu",
     delimiters: ['${', '}'],
     data: {
@@ -35,10 +35,10 @@ let leftmenu = new Vue({
     },
 
     created() {
-        let l = document.location.pathname;
+        const l = document.location.pathname;
         if (l !== '/' && l !== '/password_change/'){
-            let model = document.getElementsByClassName("menuLeftModel");
-            for (let i = 0; i < model.length ; i++) {
+            const model = document.getElementsByClassName("menuLeftModel");
+            for (var i = 0; i < model.length ; i++) {
                 if (l === model[i].children[0].pathname) {
                     model[i].parentElement.className += ' d-flex flex-column align-items-end';
                     model[i].style.background = this.sub_menu_style.background;
@@ -50,11 +50,11 @@ let leftmenu = new Vue({
     },
     methods: {
         submenu_toogle: function (event) {
-            let a = event.target.parentElement;
-            let li = a.parentElement.parentElement;
-            let inicialClassRight = 'material-icons arrow-right';
-            let inicialClassDown = 'material-icons arrow-down';
-            if (li.children[1].classList.value !== 'd-flex flex-column align-items-end') {
+            const a = event.target.parentElement;
+            const li = a.parentElement.parentElement;
+            const inicialClassRight = 'material-icons arrow-right col-1 p-0';
+            const inicialClassDown = 'material-icons arrow-down col-1 p-0';
+            if (li.children[1].classList.length === 0) {
                 li.children[1].className = 'd-flex flex-column align-items-end';
                 a.children[0].className += ' d-none';
                 a.children[1].className += ' d-block';
@@ -75,9 +75,9 @@ let leftmenu = new Vue({
     },
 });
 
-let e = document.getElementById("select");
+const e = document.getElementById("select");
 
-let rightmenu = new Vue({
+const rightmenu = new Vue({
     el: "#rightmenu",
     delimiters: ['${', '}'],
     data: {
@@ -106,8 +106,8 @@ let rightmenu = new Vue({
     },
     methods: {
         change_color: function () {
-            let e = document.getElementById("select");
-            let bkgColor = e.options[e.selectedIndex].text;
+            const e = document.getElementById("select");
+            const bkgColor = e.options[e.selectedIndex].text;
             if (bkgColor === "Purple") {
                 this.select_option_default = "Default";
                 this.selected = 2;
@@ -136,7 +136,7 @@ let rightmenu = new Vue({
     },
 });
 
-let topbar = new Vue({
+const topbar = new Vue({
     el: "#topbar",
     delimiters: ['${', '}'],
     data: {
@@ -176,23 +176,20 @@ let topbar = new Vue({
             }
             modal.modal_seen = leftmenu.l_menu_seen;
         },
-
         r_menu_toogle: function (event) {
-            //console.log(event.path[9].children[1]);
-            //let menu = event.path[13].all[71];
+            console.log(rightmenu.r_menu_seen);
             rightmenu.r_menu_seen = !rightmenu.r_menu_seen;
-            if (rightmenu.r_menu_seen === true){
+            console.log(rightmenu.r_menu_seen);
+            /*if (rightmenu.r_menu_seen === true){
                 document.onclick = function (event) {
-                    //console.log(event.target, menu);
                     if (event.target !== menu){
-                        //console.log('entrou');
                         //rightmenu.r_menu_seen = false;
                     }
                     else {
-                        //console.log('não');
+
                     }
                 }
-            }
+            }*/
             if (rightmenu.r_menu_seen === true && window.innerWidth < 768){
                 leftmenu.l_menu_seen = !rightmenu.r_menu_seen;
             }
@@ -211,7 +208,7 @@ let topbar = new Vue({
     },
 });
 
-let modal = new Vue ({
+const modal = new Vue ({
     el: "#modal",
     delimiters: ['${', '}'],
     data: {
@@ -220,7 +217,7 @@ let modal = new Vue ({
 
 });
 
-let filter = new Vue({
+const filter = new Vue({
     el: "#changelist-filter",
     delimiters: ['${', '}'],
     data: {
@@ -233,7 +230,7 @@ let filter = new Vue({
     },
 });
 
-let error = new Vue({
+const error = new Vue({
     el: "#error",
     delimiters: ['${', '}'],
     data: {
@@ -254,15 +251,15 @@ let error = new Vue({
     },
 });
 
-let result = new Vue({
+const result = new Vue({
     el: "#result_cards",
     data: {
 
     },
     methods: {
         check_all: function (event) {
-            let check_content = document.getElementById('card-content').getElementsByTagName('input');
-            for (let i = 0; i < check_content.length; i++){
+            const check_content = document.getElementById('card-content').getElementsByTagName('input');
+            for (var i = 0; i < check_content.length; i++){
                 check_content[i].checked = event.target.checked;
             }
         }

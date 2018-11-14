@@ -80,7 +80,7 @@ form .submit-row > input {
     z-index: 10;
 }
 
-.triangle:before {
+.right-menu:before {
     content: "\A";
     border-style: solid;
     border-width: 10px 10px 0 0;
@@ -91,7 +91,7 @@ form .submit-row > input {
 }
 
 @media (max-width: 767px) {
-    .d:before {
+    .right-menu:before {
         left: 130px;
     }
     .icons-top{
