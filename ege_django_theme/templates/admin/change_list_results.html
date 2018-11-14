@@ -13,7 +13,7 @@
                         <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center">
                             {% for header in result_headers %}
                                 <div class="md-list md-theme-default {% if "checkbox" in header.class_attrib %}col-1{% elif "username" in header.class_attrib %}col-2{% elif "email" in header.class_attrib %}col-3{% elif "first_name" in header.class_attrib %}col-2{% elif "last_name" in header.class_attrib %}col-2{% elif "is_staff" in header.class_attrib %}col-2{% endif %}"
-                                {% if "checkbox" in header.class_attrib %}@click="check_all()"{% endif %}>
+                                {% if "checkbox" in header.class_attrib %}@click="check_all($event)"{% endif %}>
                                     {% if header.sortable %}
                                         {% if header.sort_priority > 0 %}
                                             <div class="sortoptions">

@@ -177,9 +177,9 @@ let topbar = new Vue({
             modal.modal_seen = leftmenu.l_menu_seen;
         },
 
-        r_menu_toogle: function () {
+        r_menu_toogle: function (event) {
             //console.log(event.path[9].children[1]);
-            let menu = event.path[13].all[71];
+            //let menu = event.path[13].all[71];
             rightmenu.r_menu_seen = !rightmenu.r_menu_seen;
             if (rightmenu.r_menu_seen === true){
                 document.onclick = function (event) {
@@ -260,7 +260,7 @@ let result = new Vue({
 
     },
     methods: {
-        check_all: function () {
+        check_all: function (event) {
             let check_content = document.getElementById('card-content').getElementsByTagName('input');
             for (let i = 0; i < check_content.length; i++){
                 check_content[i].checked = event.target.checked;

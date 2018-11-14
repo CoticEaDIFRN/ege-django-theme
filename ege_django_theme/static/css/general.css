@@ -82,7 +82,7 @@ form .submit-row > input {
 
 .modal-back {
     width: 100vW;
-    height: 100vH;
+    height: 86.6%;
     z-index: 5;
     background: black;
     opacity: 0.2;
