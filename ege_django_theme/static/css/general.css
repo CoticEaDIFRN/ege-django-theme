@@ -70,10 +70,33 @@ form .submit-row > input {
     color: #fff;
 }
 
+.icons-top{
+    min-width: 29%
+}
+
 .right-menu {
     position: absolute;
     right: 0;
     z-index: 10;
+}
+
+.triangle:before {
+    content: "\A";
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: transparent rgb(11, 11, 59) transparent transparent;
+    position: absolute;
+    left: 90px;
+    top: -10px;
+}
+
+@media (max-width: 767px) {
+    .d:before {
+        left: 130px;
+    }
+    .icons-top{
+        min-width: 27%
+    }
 }
 
 .select-theme {

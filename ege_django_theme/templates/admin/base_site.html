@@ -23,17 +23,17 @@
                       {% block page-title %}
                         <h2 class="text-white ml-4"><a href="{% url 'admin:index' %}">Ecossistema de Gestão em Educação</a></h2>
                       {% endblock %}
-                      <div id="icons-top" class="pr-md-5 h-100">
+                      <div id="icons-top" class="icons-top pr-md-5 h-100">
                           <div class="d-flex flex-row justify-between align-items-center h-100">
-                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end" style="border-radius: 0">
+                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end mr-lg-3" style="border-radius: 0">
                                   <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
                                   <span class="position-absolute" v-if="countNotificationSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
                               </div>
-                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end" style="border-radius: 0">
+                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end ml-lg-3" style="border-radius: 0">
                                   <span class="md-icon"><a href="#" class="text-white">chat</a></span>
                                   <span class="position-absolute" v-if="countChatSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
                               </div>
-                              <div id="top-user" class="top-perfil" @click="r_menu_toogle" :style="top_perfil_style">
+                              <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
                                   <span><a href="#" class="text-white">{% firstof user.get_full_name|cut:"a"|cut:"b"|cut:"c"|cut:"d"|cut:"e"|cut:"f"|cut:"g"|cut:"h"|cut:"i"|cut:"j"|cut:"k"|cut:"l"|cut:"m"|cut:"n"|cut:"o"|cut:"p"|cut:"q"|cut:"r"|cut:"s"|cut:"t"|cut:"u"|cut:"v"|cut:"w"|cut:"x"|cut:"y"|cut:"z" user.get_username %}</a></span>
                               </div>
                           </div>
@@ -63,8 +63,8 @@
                                                 arrow_drop_down
                                             </i>
                                         {% endif %}
-                                        <span class="col-1 p-0"><i class="material-icons">cast_for_education</i></span>
-                                        <span class="col-10 p-0 ml-4">{{ app.name }}</span>
+                                        <span class="col-1 p-0 m-2 mr-3"><i class="material-icons">cast_for_education</i></span>
+                                        <span class="col-10 p-0 ml-3 font-weight-bold">{{ app.name }}</span>
                                     </a>
                                 </h5>
                                 <ul class="" v-show="sub_menu_seen">
@@ -72,11 +72,11 @@
                                         <div class="menuLeftModel col-11">
                                             {% if model.admin_url %}
                                                 <a href="{{ model.admin_url }}" class="text-left">
-                                                    <li style="margin-left: 50%"><p class="m-0">{{ model.name }}</p></li>
+                                                    <li style="margin-left: 20%"><h5 class="mt-2 mb-2">{{ model.name }}</h5></li>
                                                 </a>
                                             {% else %}
                                                 <li>
-                                                    <p class="text-left ml-4">{{ model.name }}</p>
+                                                    <h5 class="text-left ml-4">{{ model.name }}</h5>
                                                 </li>
                                             {% endif %}
                                         </div>
@@ -128,7 +128,7 @@
         <!--End Content-->
         <!--Right-Menu-->
             <transition :duration="{ enter: 500, leave: 100 }">
-                <div id="rightmenu" class="right-menu text-white" v-show="r_menu_seen" :style="rightmenu_style">
+                <div id="rightmenu" class="right-menu text-white triangle" v-show="r_menu_seen" :style="rightmenu_style">
                     {% if has_permission %}
                         <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
                             <div class="text-center mt-4">
