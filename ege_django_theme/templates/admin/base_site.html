@@ -25,13 +25,13 @@
                       {% endblock %}
                       <div id="icons-top" class="icons-top pr-md-5 h-100">
                           <div class="d-flex flex-row justify-between align-items-center h-100">
-                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end mr-lg-3" style="border-radius: 0">
+                              <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end mr-lg-3" style="border-radius: 0">
                                   <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
-                                  <span class="position-absolute" v-if="countNotificationSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
+                                  <span class="position-absolute" v-if="countNotificationSeen" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
                               </div>
-                              <div class="md-avatar md-avatar-icon d-flex flex-row align-items-end justify-content-end ml-lg-3" style="border-radius: 0">
-                                  <span class="md-icon"><a href="#" class="text-white">chat</a></span>
-                                  <span class="position-absolute" v-if="countChatSeen"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
+                              <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end ml-lg-3" style="border-radius: 0">
+                                  <span class="md-icon" style="left: 12px;"><a href="#" class="text-white">chat</a></span>
+                                  <span class="position-absolute" v-if="countChatSeen" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
                               </div>
                               <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
                                   <span><a href="#" class="text-white">{% firstof user.get_full_name|cut:"a"|cut:"b"|cut:"c"|cut:"d"|cut:"e"|cut:"f"|cut:"g"|cut:"h"|cut:"i"|cut:"j"|cut:"k"|cut:"l"|cut:"m"|cut:"n"|cut:"o"|cut:"p"|cut:"q"|cut:"r"|cut:"s"|cut:"t"|cut:"u"|cut:"v"|cut:"w"|cut:"x"|cut:"y"|cut:"z" user.get_username %}</a></span>
