@@ -1,88 +1,66 @@
 {% load i18n static %}
+{% load i18n admin_urls static admin_list %}
 {% if result_hidden_fields %}
     <div class="hiddenfields">{# DIV for HTML validation #}
         {% for item in result_hidden_fields %}{{ item }}{% endfor %}
     </div>
 {% endif %}
 {% if results %}
-
     <div id="result_cards">
         <template>
-                <md-list id="card-header" class="md-triple-line md-card-header">
+            <md-list id="card-content" class="md-triple-line">
+                {% for result in results %}
+                    {% if result.form.non_field_errors %}
+                        <md-list-item>
+                            <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center"><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></div>
+                        </md-list-item>
+                    {% endif %}
                     <md-list-item>
-                        <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center">
-                            {% for header in result_headers %}
-                                <div class="md-list md-theme-default {% if "checkbox" in header.class_attrib %}col-1{% elif "username" in header.class_attrib %}col-2{% elif "email" in header.class_attrib %}col-3{% elif "first_name" in header.class_attrib %}col-2{% elif "last_name" in header.class_attrib %}col-2{% elif "is_staff" in header.class_attrib %}col-2{% endif %}"
-                                {% if "checkbox" in header.class_attrib %}@click="check_all($event)"{% endif %}>
-                                    {% if header.sortable %}
-                                        {% if header.sort_priority > 0 %}
-                                            <div class="sortoptions">
-                                                <a class="sortremove" href="{{ header.url_remove }}" title="{% trans "Remove from sorting" %}"></a>
-                                                {% if num_sorted_fields > 1 %}<span class="sortpriority" title="{% blocktrans with priority_number=header.sort_priority %}Sorting priority: {{ priority_number }}{% endblocktrans %}">{{ header.sort_priority }}</span>{% endif %}
-                                                <a href="{{ header.url_toggle }}" class="toggle {% if header.ascending %}ascending{% else %}descending{% endif %}" title="{% trans "Toggle sorting" %}"></a>
-                                            </div>
-                                        {% endif %}
-                                    {% endif %}
-                                    <md-list-item>
-                                        <div class="text-center">
-                                            {% if header.sortable %}<a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>{% else %}<span>{{ header.text|capfirst }}</span>{% endif %}
-                                        </div>
-                                    </md-list-item>
+                        <div class="d-flex flex-row align-items-center justify-content-around w-100">
+                            {% for item in result %}<div class="{% if "checkbox" in item %}col-1{% else %}d-none{% endif %}">{{ item|urlize }}</div>{% endfor %}
+                            <div class="card col-10 p-0">
+                                {% for item in result %}<div class="{% if "username" in item %}card-header text-center h3 p-0{% else %}d-none{% endif %}">{{ item|urlize }}</div>{% endfor %}
+                                <div class="card-body p-2">
+                                    {% for item in result %}<div class="{% if "email" in item %}text-center text-muted{% else %}d-none{% endif %}">{{ item|urlize }}</div>{% endfor %}
+                                    <div class="d-flex flex-row align-items-center justify-content-center">
+                                        {% for item in result %}<div class="{% if "first_name" in item or "group" in item %}{% else %}d-none{% endif %}">{{ item|urlize }}</div>{% endfor %}
+                                        {% for item in result %}<div class="{% if "last_name" in item %}ml-1{% else %}d-none{% endif %}">{{ item|urlize }}</div>{% endfor %}
+                                    </div>
                                 </div>
-                            {% endfor %}
+                            </div>
+                            <div class="col-1 d-flex align-items-center justify-content-center" style="height: 6em">
+                                <div class="d-flex flex-column align-items-center">
+                                    <v-btn outline fab color="grey" class="border-0 m-0" style="width: 2em; height: 2em" @click="show_actions">
+                                      <v-icon dark>list</v-icon>
+                                    </v-btn>
+                                    <div class="btn-group btn-group-sm btn-group-vertical" role="group" v-show="btn_action">
+                                        <button type="button" class="btn btn-light">Ação 1</button>
+                                        <button type="button" class="btn btn-light">Ação 2</button>
+                                        <button type="button" class="btn btn-light">Ação 3</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </md-list-item>
-                </md-list>
-                <md-divider class="md-inset"></md-divider>
-                <md-list id="card-content" class="md-triple-line">
-                    {% for result in results %}
-                        {% if result.form.non_field_errors %}
-                            <md-list-item>
-                                <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center"><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></div>
-                            </md-list-item>
-                        {% endif %}
-                        <md-list-item>
-                            <div class="md-list-item-text {% cycle 'row1' 'row2' %} d-flex flex-row align-items-center justify-content-center">
-                                {% for item in result %}<div class="text-center {% if "checkbox" in item %}col-1{% elif "username" in item %}col-2{% elif "email" in item %}col-3{% elif "first_name" in item %}col-2{% elif "last_name" in item %}col-2{% elif "is_staff" in item %}col-2{% endif %}">{{ item|urlize }}</div>{% endfor %}
-                            </div>
-                        </md-list-item>
-                    {% endfor %}
-                </md-list>
+                {% endfor %}
+            </md-list>
         </template>
-    </div>
-
-    {% comment %}
-        <div class="results table-responsive">
-            <table id="result_list" class="table table-striped">
-                <thead>
-                    <tr>
-                        {% for header in result_headers %}
-                            <th scope="col" {{ header.class_attrib }}>
-                               {% if header.sortable %}
-                                 {% if header.sort_priority > 0 %}
-                                   <div class="sortoptions">
-                                     <a class="sortremove" href="{{ header.url_remove }}" title="{% trans "Remove from sorting" %}"></a>
-                                     {% if num_sorted_fields > 1 %}<span class="sortpriority" title="{% blocktrans with priority_number=header.sort_priority %}Sorting priority: {{ priority_number }}{% endblocktrans %}">{{ header.sort_priority }}</span>{% endif %}
-                                     <a href="{{ header.url_toggle }}" class="toggle {% if header.ascending %}ascending{% else %}descending{% endif %}" title="{% trans "Toggle sorting" %}"></a>
-                                   </div>
-                                 {% endif %}
-                               {% endif %}
-                               <div class="text">{% if header.sortable %}<a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>{% else %}<span>{{ header.text|capfirst }}</span>{% endif %}</div>
-                               <div class="clear"></div>
-                            </th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for result in results %}
-                        {% if result.form.non_field_errors %}
-                            <tr><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></tr>
-                        {% endif %}
-                        <tr class="{% cycle 'row1' 'row2' %}">{% for item in result %}{{ item }}{% endfor %}</tr>
+        <md-list id="card-header" class="md-triple-line md-card-header" style="background-color: transparent">
+            <md-list-item>
+                <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center">
+                    {% for header in result_headers %}
+                        <div id="check_all" class="{% if "checkbox" in header.class_attrib %}md-list md-theme-default{% else %}d-none{% endif %}" style="background-color: transparent; width: 3em"
+                        {% if "checkbox" in header.class_attrib %}@click="check_all($event)"{% endif %}>
+                            <md-list-item>
+                                <div class="text-center">
+                                    {% if header.sortable %}<a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>{% else %}<span>{{ header.text|capfirst }}</span>{% endif %}
+                                </div>
+                            </md-list-item>
+                        </div>
                     {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% endcomment %}
-
+                    <label style="width: 10%">{% trans 'Selecionar todos' %}</label>
+                </div>
+            </md-list-item>
+        </md-list>
+    </div>
 {% endif %}

@@ -65,9 +65,11 @@ input[type="submit"], button {
 
     /* Dashboard */
 
-    .dashboard #content {
-        width: auto;
-    }
+    /*
+        .dashboard #content {
+            width: auto;
+        }
+    */
 
     #content-related {
         margin-right: -290px;
@@ -100,13 +102,15 @@ input[type="submit"], button {
         padding: 15px;
     }
 
-    #changelist-search > div {
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-        flex-wrap: wrap;
-        max-width: 480px;
-    }
+    /*
+        #changelist-search > div {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            max-width: 480px;
+        }
+    */
 
     #changelist-search label {
         line-height: 22px;

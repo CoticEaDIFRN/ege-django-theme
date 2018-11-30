@@ -88,6 +88,9 @@ const rightmenu = new Vue({
             background: "#162533"
         },
     },
+    mounted() {
+
+    },
     updated() {
         localStorage.selected = this.selected;
         localStorage.selDefault = this.select_option_default;
@@ -177,19 +180,19 @@ const topbar = new Vue({
             modal.modal_seen = leftmenu.l_menu_seen;
         },
         r_menu_toogle: function (event) {
-            console.log(rightmenu.r_menu_seen);
             rightmenu.r_menu_seen = !rightmenu.r_menu_seen;
-            console.log(rightmenu.r_menu_seen);
-            /*if (rightmenu.r_menu_seen === true){
+            /*
+            if (rightmenu.r_menu_seen === true){
+                console.log(event.target);
                 document.onclick = function (event) {
-                    if (event.target !== menu){
-                        //rightmenu.r_menu_seen = false;
-                    }
-                    else {
-
+                    const evt = event.target.id;
+                    console.log(evt);
+                    if (evt !== 'user-tools' && evt !== 'account_circle' && evt !== 'usertools_username'){
+                        rightmenu.r_menu_seen = false
                     }
                 }
-            }*/
+            }
+            */
             if (rightmenu.r_menu_seen === true && window.innerWidth < 768){
                 leftmenu.l_menu_seen = !rightmenu.r_menu_seen;
             }
@@ -254,7 +257,7 @@ const error = new Vue({
 const result = new Vue({
     el: "#result_cards",
     data: {
-
+        btn_action: false
     },
     methods: {
         check_all: function (event) {
@@ -262,6 +265,11 @@ const result = new Vue({
             for (var i = 0; i < check_content.length; i++){
                 check_content[i].checked = event.target.checked;
             }
+        },
+        show_actions: function (event) {
+            const a = event.target.parentNode.parentNode.parentNode.lastChild;
+            if (a.classList.length === 3) { a.className += ' d-flex' }
+            else { a.className = 'btn-group btn-group-sm btn-group-vertical' }
         }
     },
 });
