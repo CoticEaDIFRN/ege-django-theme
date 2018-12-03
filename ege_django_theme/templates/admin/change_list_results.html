@@ -28,8 +28,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center" style="height: 6em">
-                                <div class="d-flex flex-column align-items-center">
+                            <div class="col-1 d-flex align-items-center justify-content-center p-0" style="height: 6em">
+                                <div class="d-flex flex-row align-items-center justify-content-around w-100">
                                     <v-btn outline fab color="grey" class="border-0 m-0" style="width: 2em; height: 2em" @click="show_actions">
                                       <v-icon dark>list</v-icon>
                                     </v-btn>
@@ -45,7 +45,7 @@
                 {% endfor %}
             </md-list>
         </template>
-        <md-list id="card-header" class="md-triple-line md-card-header" style="background-color: transparent">
+        <md-list id="card-header" class="d-flex flex-row align-center justify-center p-0 m-0" style="background-color: transparent; height: 4em">
             <md-list-item>
                 <div class="md-list-item-text d-flex flex-row align-items-center justify-content-center">
                     {% for header in result_headers %}
@@ -58,7 +58,7 @@
                             </md-list-item>
                         </div>
                     {% endfor %}
-                    <label style="width: 10%">{% trans 'Selecionar todos' %}</label>
+                    <label style="width: 10em">{% trans 'Selecionar todos' %}</label>
                 </div>
             </md-list-item>
         </md-list>

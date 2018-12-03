@@ -64,7 +64,7 @@
             <div class="d-flex flex-column align-items-center">
 
                 <div class="d-flex flex-row w-100 justify-content-center border-bottom">
-                    <form id="changelist-form" class="col-12 mb-4" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
+                    <form id="changelist-form" class="col-12" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
                         {% if cl.formset %}
                             <div>{{ cl.formset.management_form }}</div>
                         {% endif %}
@@ -83,10 +83,10 @@
                     {% if cl.has_filters %}
                         <div id="changelist-filter" class="d-flex flex-column flex-xl-row align-items-center justify-content-between m-3 w-100">
                             <a class="col-4 col-md-2" @click='show_filter'>
-                                <div class="d-flex flex-row justify-content-around">
+                                <div class="d-flex flex-row justify-center">
                                     <p class="m-0">{% trans 'Filter' %}</p>
-                                    <i class="material-icons" v-if="filter_seen">visibility_off</i>
-                                    <i class="material-icons" v-else>visibility</i>
+                                    <i class="material-icons ml-3" v-if="filter_seen">visibility_off</i>
+                                    <i class="material-icons ml-3" v-else>visibility</i>
                                 </div>
                             </a>
                             <div id="filter" v-if="filter_seen" class="d-flex flex-column flex-md-row justify-content-around">

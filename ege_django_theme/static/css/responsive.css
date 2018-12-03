@@ -5,6 +5,12 @@ input[type="submit"], button {
     appearance: none;
 }
 
+@media (min-width: 768px) {
+    #container {
+        height: 100%;
+    }
+}
+
 @media (max-width: 1024px) {
     /* Basic */
 
@@ -470,6 +476,10 @@ input[type="submit"], button {
 
     .colMS, .colSM {
         margin: 0;
+    }
+
+    #container {
+        height: 100vh;
     }
 
     #content-related, .colSM #content-related {
