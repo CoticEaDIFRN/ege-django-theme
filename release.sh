@@ -34,22 +34,28 @@ create_setup_cfg_file() {
     echo """# -*- coding: utf-8 -*-
 from distutils.core import setup
 setup(
-    name='ege_django_auth_jwt',
-    packages=['ege_django_auth_jwt', ],
+    name='ege_django_theme',
+    description='EGE Django Theme',
+    long_description='EGE Django Theme',
+    license='MIT',
+    author='Luiz Antonio Freitas de Assis',
+    author_email='luizvpc@gmail.com',
+    packages=['ege_django_theme', 'ege_django_theme/migrations', 'ege_django_theme/static', 'ege_django_theme/templates', 'ege_django_theme/templatetags'],
+    include_package_data=True,
     version='$1',
-    download_url='https://github.com/CoticEaDIFRN/ege_django_auth_jwt/releases/tag/$1',
-    description='JWT authentication for Django from EGE project',
-    long_description='JWT authentication for Django EGE project',
-    author='Kelson da Costa Medeiros',
-    author_email='kelsoncm@ifrn.edu.br',
-    url='https://github.com/CoticEaDIFRN/ege_django_auth_jwt',
+    download_url='https://github.com/CoticEaDIFRN/ege_django_theme/releases/tag/$1',
+    url='https://github.com/CoticEaDIFRN/ege_django_theme',
     keywords=['EGE', 'JWT', 'Django', 'Auth', 'SSO', 'client', ],
-    install_requires=['PyJWT==1.7.1', 'requests==2.21.0', 'django>=2.0,<3.0'],
-    classifiers=[]
+    # install_requires=['PyJWT==1.7.1', 'requests==2.21.0', 'django>=2.0,<3.0'],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ]
 )
 """ > setup.py
-    docker build -t ifrn/ege.django_auth_jwt --force-rm .
-    docker run --rm -it -v `pwd`:/src ifrn/ege.django_auth_jwt python setup.py sdist
+    docker build -t ifrn/ege.django_theme --force-rm .
+    docker run --rm -it -v `pwd`:/src ifrn/ege.django_theme python setup.py sdist
 }
 
 if [[ $# -eq 1 ]]
@@ -81,7 +87,7 @@ if [[ $# -eq 2 ]] && [[ "$1" == "-d" || "$1" == "-g" || "$1" == "-p" ]]
         echo ""
         echo "PyPI Hub: Uploading"
         echo ""
-        docker run --rm -it -v `pwd`:/src ifrn/ege.django_auth_jwt twine upload dist/ege_django_auth_jwt-$2.tar.gz
+        docker run --rm -it -v `pwd`:/src ifrn/ege.django_theme twine upload dist/ege_django_theme-$2.tar.gz
     fi
 fi
 
