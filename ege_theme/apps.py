@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TemaConfig(AppConfig):
-    name = 'ege'
+    name = 'ege_theme'
