@@ -34,7 +34,7 @@
                                   <span class="position-absolute" v-if="countChatSeen" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
                               </div>
                               <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
-                                  <span><a href="#" class="text-white">{% firstof user.get_full_name|cut:"a"|cut:"b"|cut:"c"|cut:"d"|cut:"e"|cut:"f"|cut:"g"|cut:"h"|cut:"i"|cut:"j"|cut:"k"|cut:"l"|cut:"m"|cut:"n"|cut:"o"|cut:"p"|cut:"q"|cut:"r"|cut:"s"|cut:"t"|cut:"u"|cut:"v"|cut:"w"|cut:"x"|cut:"y"|cut:"z" user.get_username %}</a></span>
+                                  <span><a href="#" class="text-white">{% firstof ege.user.social_name user.get_username %}</a></span>
                               </div>
                           </div>
                       </div>
@@ -129,36 +129,34 @@
         <!--Right-Menu-->
             <transition :duration="{ enter: 500, leave: 100 }">
                 <div id="rightmenu" class="right-menu text-white triangle" v-show="r_menu_seen" :style="rightmenu_style">
-                    {% if has_permission %}
-                        <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
-                            <div class="text-center mt-4">
-                                <span class="md-icon"><a href="#" class="text-white">account_circle</a></span>
-                            </div>
-                            <h5 class="p-4 text-center">
-                                {% trans 'Welcome, ' %}<span class="text-bold">{% firstof user.get_short_name user.get_username %}!</span>
-                            </h5>
-
-                            <select id="select" v-model="selected" class="custom-select select-theme mb-4 w-75" @change="change_color">
-                                <option value="0">${ select_option_default }</option>
-                                <option value="1">Green</option>
-                                <option value="2">Purple</option>
-                            </select>
-
-                            {% if user.is_active and user.is_staff %}
-                                {% url 'django-admindocs-docroot' as docsroot %}
-                                {% if docsroot %}
-                                    <a href="{{ docsroot }}" class="text-white">{% trans 'Documentation' %}</a>
-                                {% endif %}
-                            {% endif %}
-                            {% if site_url %}
-                                <a href="{{ site_url }}" class="text-center p-2 text-white">{% trans 'View site' %}</a></h5>
-                            {% endif %}
-                            {% if user.has_usable_password %}
-                                <a href="{% url 'admin:password_change' %}" class="text-center p-2 text-white">{% trans 'Change password' %}</a>
-                            {% endif %}
-                            <a href="{% url 'admin:logout' %}" class="text-right p-4 text-white"><span class="md-icon">highlight_off</span>{% trans 'Log out' %}</a>
+                    <div id="user-tools" class="d-flex flex-column align-items-center mb-3">
+                        <div class="text-center mt-4">
+                            <span class="md-icon"><a href="#" class="text-white">account_circle</a></span>
                         </div>
-                    {% endif %}
+                        <h5 class="p-4 text-center">
+                            {% trans 'Welcome, ' %}<span class="text-bold">{% firstof ege.user.social_name user.get_username %}!</span>
+                        </h5>
+
+                        <select id="select" v-model="selected" class="custom-select select-theme mb-4 w-75" @change="change_color">
+                            <option value="0">${ select_option_default }</option>
+                            <option value="1">Green</option>
+                            <option value="2">Purple</option>
+                        </select>
+
+                        {% if user.is_active and user.is_staff %}
+                            {% url 'django-admindocs-docroot' as docsroot %}
+                            {% if docsroot %}
+                                <a href="{{ docsroot }}" class="text-white">{% trans 'Documentation' %}</a>
+                            {% endif %}
+                        {% endif %}
+                        {% if site_url %}
+                            <a href="{{ site_url }}" class="text-center p-2 text-white">{% trans 'View site' %}</a></h5>
+                        {% endif %}
+                        {% if user.has_usable_password %}
+                            <a href="{% url 'admin:password_change' %}" class="text-center p-2 text-white">{% trans 'Change password' %}</a>
+                        {% endif %}
+                        <a href='./logout/' class="text-right p-4 text-white"><span class="md-icon">highlight_off</span>{% trans 'Log out' %}</a>
+                    </div>
                 </div>
             </transition>
 

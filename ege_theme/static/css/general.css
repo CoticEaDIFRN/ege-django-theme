@@ -86,13 +86,13 @@ form .submit-row > input {
     border-width: 10px 10px 0 0;
     border-color: transparent rgb(11, 11, 59) transparent transparent;
     position: absolute;
-    left: 90px;
+    right: 65px;
     top: -10px;
 }
 
 @media (max-width: 767px) {
     .right-menu:before {
-        left: 130px;
+        right: 25px;
     }
     .icons-top{
         min-width: 27%
