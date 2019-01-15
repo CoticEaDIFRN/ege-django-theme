@@ -2,11 +2,9 @@
 {% load i18n %}
 
 {% block page-title %}
-    <h2 class="text-white ml-4">
-        {% for app in app_list %}
-            {{ app.name }}
-        {% endfor %}
-    </h2>
+    {% for app in app_list %}
+        {{ app.name }}
+    {% endfor %}
 {% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ app_label }}{% endblock %}

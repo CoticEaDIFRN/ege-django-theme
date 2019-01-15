@@ -23,9 +23,7 @@
     {{ media.js }}
 {% endblock %}
 
-{% block page-title %}
-    <h2 class="text-white ml-4">{{ cl.opts.verbose_name_plural|capfirst }}</h2>
-{% endblock %}
+{% block page-title %}{{ cl.opts.verbose_name_plural|capfirst }}{% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
 

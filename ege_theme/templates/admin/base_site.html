@@ -20,21 +20,21 @@
                       <img class="w-50 ml-4" src="{% static 'img/ege branco.svg' %}" alt="Ecossistema de Gestão em Educação">
                   </div>
                   <div class="d-flex flex-row justify-content-between align-items-center w-100 h-100">
-                      {% block page-title %}
-                        <h2 class="text-white ml-4"><a href="{% url 'admin:index' %}">Ecossistema de Gestão em Educação</a></h2>
-                      {% endblock %}
-                      <div id="icons-top" class="icons-top pr-md-5 h-100">
-                          <div class="d-flex flex-row justify-end align-items-center h-100">
-                              <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end mr-lg-3" v-if="countNotificationSeen" style="border-radius: 0">
-                                  <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
-                                  <span class="position-absolute" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
-                              </div>
-                              <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end ml-lg-3" v-if="countChatSeen" style="border-radius: 0">
-                                  <span class="md-icon" style="left: 12px;"><a href="#" class="text-white">chat</a></span>
-                                  <span class="position-absolute" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
-                              </div>
-                              <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
-                                  <span><a href="#" class="text-white">{% firstof ege.user.social_name user.get_username %}</a></span>
+                      <div class="d-flex flex-row w-100">
+                            <h2 class="text-white text-center col m-0">{% block page-title %}<a href="{% url 'admin:index' %}">Ecossistema de Gestão em Educação</a>{% endblock %}</h2>
+                          <div id="icons-top" class="icons-top pr-md-5 h-100">
+                              <div class="d-flex flex-row justify-end align-items-center h-100">
+                                  <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end mr-lg-3" v-if="countNotificationSeen" style="border-radius: 0">
+                                      <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
+                                      <span class="position-absolute" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countNotification}</a></span>
+                                  </div>
+                                  <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end ml-lg-3" v-if="countChatSeen" style="border-radius: 0">
+                                      <span class="md-icon" style="left: 12px;"><a href="#" class="text-white">chat</a></span>
+                                      <span class="position-absolute" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
+                                  </div>
+                                  <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
+                                      <span><a href="#" class="text-white">{% firstof ege.user.social_name user.get_username %}</a></span>
+                                  </div>
                               </div>
                           </div>
                       </div>
