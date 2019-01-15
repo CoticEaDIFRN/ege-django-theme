@@ -72,6 +72,7 @@ form .submit-row > input {
 
 .right-menu {
     position: absolute;
+    width: 15em;
     right: 0;
     z-index: 10;
 }
@@ -88,10 +89,7 @@ form .submit-row > input {
 
 @media (max-width: 767px) {
     .right-menu:before {
-        right: 25px;
-    }
-    .icons-top{
-        min-width: 27%
+        right: 40px;
     }
 }
 
