@@ -13,16 +13,19 @@
         <div id="topbar" class="page-container">
             <div class="md-app" name="reveal">
               <div id="vuejs_menu" class="md-app-toolbar md-primary menu w-100 text-white" :style="top_menu_style">
-                  <button id="btn-menu" class="md-button md-icon-button f-left d-md-none" @click="l_menu_toogle">
-                      <span class="md-icon text-white">menu</span>
-                  </button>
-                  <div class="d-none d-md-flex flex-row justify-content-left logo">
-                      <img class="w-50 ml-4" src="{% static 'img/ege branco.svg' %}" alt="Ecossistema de Gestão em Educação">
+                  <div style="width: 15%">
+                      <button id="btn-menu" class="md-button md-icon-button f-left d-md-none" @click="l_menu_toogle">
+                          <span class="md-icon text-white">menu</span>
+                      </button>
+                      <div class="d-none d-md-flex flex-row justify-content-left logo">
+                          <img class="w-50 ml-4" src="{% static 'img/ege branco.svg' %}" alt="Ecossistema de Gestão em Educação">
+                      </div>
                   </div>
+
                   <div class="d-flex flex-row justify-content-between align-items-center w-100 h-100">
                       <div class="d-flex flex-row w-100">
-                            <h2 class="text-white text-center col m-0">{% block page-title %}<a href="{% url 'admin:index' %}">Ecossistema de Gestão em Educação</a>{% endblock %}</h2>
-                          <div id="icons-top" class="icons-top pr-md-5 h-100">
+                            <h2 class="text-white text-center col-10 m-0">{% block page-title %}<a href="{% url 'admin:index' %}">Ecossistema de Gestão em Educação</a>{% endblock %}</h2>
+                          <div id="icons-top" class="pr-md-5 h-100 col">
                               <div class="d-flex flex-row justify-end align-items-center h-100">
                                   <div class="md-avatar md-avatar-icon d-flex flex-row justify-content-end mr-lg-3" v-if="countNotificationSeen" style="border-radius: 0">
                                       <span class="md-icon"><a href="#" class="text-white">notifications</a></span>
