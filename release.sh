@@ -9,7 +9,7 @@ SYNOPSIS
        ./release.sh [-d|-p|-g] <version>
 
 DESCRIPTION
-       Create a new release to ege_auth_jwt python package.
+       Create a new release to ege_theme python package.
 
 OPTIONS
        -d         Deploy to Github and PyPI
