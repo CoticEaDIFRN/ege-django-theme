@@ -72,7 +72,7 @@
                                                   <span class="position-absolute" style="top: 5px"><a href="#" class="text-white d-flex justify-content-center align-items-center" style="font-size: 12px; background: red; border-radius: 50%; width: 12px; height: 12px;">${countChat}</a></span>
                                               </div>
                                               <div id="top-user" class="top-perfil ml-3 ml-md-0" @click="r_menu_toogle" :style="top_perfil_style">
-                                                  <span><a href="#" class="text-white">{% firstof ege.user.presentation_name user.get_username %}</a></span>
+                                                  <span><a href="#" class="text-white">{% firstof ege.user.photo_url ege.user.presentation_name|make_list|first %}</a></span>
                                               </div>
                                           </div>
                                       </div>
