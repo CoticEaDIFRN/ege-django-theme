@@ -21,4 +21,9 @@
 #
 # @author 'Kelson da Costa Medeiros <kelsoncm@gmail.com>'
 
+# build
 twine==1.12.1
+flake8==3.7.9
+coverage==5.0
+django_debug_toolbar==2.1
+django-extensions==2.2.5

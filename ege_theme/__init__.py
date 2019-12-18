@@ -1,5 +1,3 @@
-from django.utils.translation import gettext as _
-
 name = "ege"
 
 skins = [
