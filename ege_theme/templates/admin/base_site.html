@@ -9,10 +9,10 @@
     <div class="d-flex w-100 h-100">
         {% block left_menu %}
             <!--Left Menu-->
-            <div id="leftmenu" class="left-menu pt-5 shadow d-none d-md-block" :style="left_menu_style" v-show="l_menu_seen">
-                <ul class="pt-lg-3">
-                    {% get_app_list as all_app_list %}
-                    {% if all_app_list %}
+            {% get_app_list as all_app_list %}
+            {% if all_app_list %}
+                <div id="leftmenu" class="left-menu pt-5 shadow d-none d-md-block" :style="left_menu_style" v-show="l_menu_seen">
+                    <ul class="pt-lg-3">
                         {% for app in all_app_list %}
                             <li class="title-menu d-flex flex-column justify-content-center" style="min-height: 4em">
                                 <h5 class="text-left m-0 mb-2" @click="submenu_toogle">
@@ -46,10 +46,10 @@
                                 </ul>
                             </li>
                         {% endfor %}
-                    {% else %}
-                    {% endif %}
-                </ul>
-            </div>
+                    </ul>
+                </div>
+            {% else %}
+            {% endif %}
             <!--End Left Menu-->
         {% endblock %}
     </div>
